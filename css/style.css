@@ -1570,6 +1570,20 @@ a.button4:hover {
 	font-size: 1em;
 	padding: 0.5em;
 }
+.register-top-grid input[type="email"], .register-bottom-grid input[type="password"] {
+    border: 1px solid #555;
+    outline-color: #FD9F3E;
+    width: 96%;
+    font-size: 1em;
+    padding: 0.5em;
+}
+.register-top-grid select, .register-bottom-grid input[type="password"] {
+	border: 1px solid #555;
+	outline-color:#FD9F3E;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+}
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
@@ -1641,7 +1655,7 @@ a.button4:hover {
 .register-but{
 	margin-top:1em;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background: #e7663f;
 	color: #FFF;
 	font-size: 1.2em;
