@@ -11,7 +11,7 @@ if (isset($_GET['action']) && ($_GET['action'] == 'logout')) {
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>CedHosting | <?php echo ucfirst($title); ?></title>
+        <title>CedHosting</title>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +69,7 @@ if (isset($_GET['action']) && ($_GET['action'] == 'logout')) {
                                 <i class="icon-bar"></i>
                             </button>				  
                             <div class="navbar-brand">
-                                <h1><a href="index.php"><img src="images/cedhosting.png" alt="cedhosting"></a></h1>
+                                <h1><a href="index.php"><img src="images/logo.jpeg" alt="cedhosting"></a></h1>
                             </div>
                         </div>
 
@@ -78,8 +78,9 @@ if (isset($_GET['action']) && ($_GET['action'] == 'logout')) {
                             <ul class="nav navbar-nav">
                                 <li <?php if ($filename == 'index.php') : ?>class="active"<?php endif; ?> ><a href="index.php">Home <i class="sr-only">(current)</i></a></li>
                                 <li <?php if ($filename == 'about.php') : ?>class="active"<?php endif; ?>><a href="about.php">About</a></li>
+                                    <li <?php if ($filename == 'services.php') : ?>class="active"<?php endif; ?>><a href="services.php">Services</a></li>
                                 <li class="dropdown <?php if (in_array($filename, $service_menu)) : ?>active<?php endif; ?> ">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<i class="caret"></i></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
                                     <ul class="dropdown-menu">
                                                 <li <?php if ($filename == 'linuxhosting.php') : ?>class="active"<?php endif; ?> ><a href="linuxhosting.php">Linux hosting</a></li>
                                                 <li <?php if ($filename == 'wordpresshosting.php') : ?>class="active"<?php endif; ?> ><a href="wordpresshosting.php">WordPress Hosting</a></li>

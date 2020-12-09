@@ -13,6 +13,9 @@
 require "User.php";
 require "Dbcon.php";
 // session_destroy();
+if (isset($_SESSION['user'])) {
+    header('Location: http://localhost/Ced_Hosting/index.php');
+}
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
@@ -38,11 +41,11 @@ require "header.php";
                             <form method="POST">
                                 <div>
                                 <span>Email Address<label>*</label></span>
-                                <input type="email" name="email" required> 
+                                <input type="email" name="email" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$" required> 
                                 </div>
                                 <div>
                                 <span>Password<label>*</label></span>
-                                <input type="password" name="password" requireds> 
+                                <input type="password" name="password" required> 
                                 </div>
                                 <a class="forgot" href="#">Forgot Your Password?</a>
                                 <input type="submit" name="login" value="Login">

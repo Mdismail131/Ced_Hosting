@@ -10,22 +10,28 @@
  * @version  SVN: $Id$
  * @link     https://yoursite.com
  */
-require "header.php";
 require "User.php";
 require "Dbcon.php";
+if (isset($_SESSION['user'])) {
+    header('Location: http://localhost/Ced_Hosting/index.php');
+}
+require "header.php";
 if (isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $date = Date("Y-m-d h:i:s");
     $mobile = isset($_POST['mobile']) ? $_POST['mobile'] : '';
+    $mob = str_split($mobile);
     $password = $_POST['password'];
     $re_password = $_POST['re-password'];
     $sec_ques = isset($_POST['question']) ? $_POST['question'] : '';
     $sec_ans = isset($_POST['answer']) ? $_POST['answer'] : '';
     if ($password != $re_password) {
         echo "<script>alert('Re_password incorrect.')</script>";
-    } elseif (strlen($mobile) < 10 || strlen($mobile) > 10) {
+    } elseif (strlen($mobile) < 10 || strlen($mobile) > 11) {
         echo "<script>alert('Mobile number must contain 10 digits.')</script>";
+    } elseif ($mob[1] == $mob[2] && $mob[2] == $mob[3] && $mob[3] == $mob[4] && $mob[4] == $mob[5]) {
+        echo "<script>alert('All Similar number not allowed')</script>";
     } else {
         $user->signup($name, $email, $mobile, $date, $password, $sec_ques, $sec_ans, $db->conn);
     }
@@ -44,13 +50,14 @@ if (isset($_POST['register'])) {
                             <span>Full Name<label>*</label></span>
                             <input type="text" name="name" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" required> 
                         </div>
+                        <!-- pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" -->
                         <div>
                             <span>Email Address<label>*</label></span>
-                            <input type="email" name="email" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$" required> 
+                            <input type="email" name="email" pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" required> 
                         </div>
                         <div>
                             <span>security question</span>
-                            <select name="question">
+                            <select name="question" required>
                                 <option selected>Choose</option>
                                 <option>What was your childhood nickname?</option>
                                 <option>What is the name of your favourite childhood friend?</option>
@@ -61,13 +68,13 @@ if (isset($_POST['register'])) {
                         </div>
                         <div>
                             <span>Security answer</span>
-                            <input type="text" pattern="^[a-zA-Z]*$" name="answer"> 
+                            <input type="text" pattern="^[a-zA-Z]*$" name="answer" required> 
                         </div>
                         <div>
                             <span>Mobile</span>
-                            <input type="text" name="mobile" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" placeholder="10 digit mobile number"> 
+                            <input type="text" name="mobile" pattern="^(|[0]){0,1}([7-9]{1})([0-9]{9})$" placeholder="10 digit mobile number" required> 
                         </div>
-                        <div class="clearfix"> </div>
+                        <div class="clearfix"> </div> 
                         <a class="news-letter" href="#">
                             <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
                         </a>
