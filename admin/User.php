@@ -25,9 +25,15 @@ class User
         $result = $conn->query($sql);
         $row = mysqli_fetch_assoc($result);
         if ($result->num_rows > 0 ) {
-            if ($row['email_approved'] == 1 || $row['phone_approved'] == 1) {
+            if ($row['is_admin'] == 1) {
                 $_SESSION['user'] = $row['name'];
-                echo "<script>alert('successfully logged in')</script>";
+                echo "<script>alert('Welcome Admin')</script>";
+                header('refresh:0 url=http://localhost/Ced_Hosting/admin/dashboard.php');
+            } else {
+                if ($row['email_approved'] == 1 || $row['phone_approved'] == 1) {
+                    $_SESSION['user'] = $row['name'];
+                    echo "<script>alert('successfully logged in')</script>";
+                }
             }
         }
         header('refresh:0 url=index.php');
