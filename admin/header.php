@@ -27,6 +27,7 @@
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
@@ -69,7 +70,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="javascript:;" class="nav-link">
+                    <a href="add_product.php" class="nav-link">
                       <i class="ni ni-fat-add text-primary"></i>
                       <span class="sidenav-normal">Add Products</span>
                     </a>
