@@ -26,17 +26,19 @@ class User
         $row = mysqli_fetch_assoc($result);
         if ($result->num_rows > 0 ) {
             if ($row['is_admin'] == 1) {
-                $_SESSION['user'] = $row['name'];
+                $_SESSION['admin'] = $row['name'];
                 echo "<script>alert('Welcome Admin')</script>";
-                header('refresh:0 url=http://localhost/Ced_Hosting/admin/dashboard.php');
+                header('refresh:0 url=http://localhost/Ced_Hosting/admin/index.php');
             } else {
                 if ($row['email_approved'] == 1 || $row['phone_approved'] == 1) {
                     $_SESSION['user'] = $row['name'];
                     echo "<script>alert('successfully logged in')</script>";
-                }
+                    header('refresh:0 url=ttp://localhost/Ced_Hosting/index.php');
+                } 
             }
+        } else {
+            echo "<script>alert('User Doesn't Exist')</script>";
         }
-        header('refresh:0 url=index.php');
     }
 
     /* Function for user SignUp */
@@ -53,7 +55,7 @@ class User
             $sql1 = "INSERT INTO `tbl_user`(`email`, `name`, `mobile`, `email_approved`, `phone_approved`, `active`, `is_admin`, `sign_up_date`, `password`, `security_question`, `security_answer`) VALUES ('$email','$name','$mobile','0','0','0','0','$date','$password','$sec_ques','$sec_ans')";
             // echo $sql1;
             $result1 = $conn->query($sql1);
-
+            
             $robo = 'mi0718839@gmail.com';
             $developmentMode = true;
             $mailer = new PHPMailer($developmentMode);

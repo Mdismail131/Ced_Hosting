@@ -1,6 +1,10 @@
 <?php
 session_start();
 require "header.php";
+if (isset($_GET['action']) && ($_GET['action'] == 'logout')) {
+    unset($_SESSION['admin']);
+    header('Location: http://localhost/Ced_Hosting/login.php');
+}
 ?>
     <!-- Header -->
     <div class="header bg-primary pb-6">

@@ -10,8 +10,8 @@
  * @version  SVN: $Id$
  * @link     https://yoursite.com
  */
-require "User.php";
-require "Dbcon.php";
+require "admin/User.php";
+require "admin/Dbcon.php";
 // session_destroy();
 if (isset($_SESSION['user'])) {
     header('Location: http://localhost/Ced_Hosting/index.php');

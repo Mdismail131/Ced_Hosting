@@ -76,7 +76,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="javascript:;" class="nav-link">
+                    <a href="view_product.php" class="nav-link">
                       <i class="ni ni-folder-17 text-primary"></i>
                       <span class="sidenav-normal">View Products</span>
                     </a>
@@ -425,7 +425,7 @@
                     <img alt="Image placeholder" src="assets/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                    <span class="mb-0 text-sm  font-weight-bold"><?php echo $_SESSION['admin'];?></span>
                   </div>
                 </div>
               </a>
@@ -450,7 +450,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="http://localhost/Ced_Hosting/login.php?action=logout" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>

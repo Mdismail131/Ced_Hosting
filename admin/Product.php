@@ -37,7 +37,7 @@ class Product
     } 
     public function add_cat($sub_cat, $href, $conn)
     {
-        $sql = "INSERT INTO `tbl_product`(`prod_name`, `link`) VALUES ('$sub_cat', '$href')";
+        $sql = "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `link`) VALUES ('1', '$sub_cat', '$href')";
         $result = $conn->query($sql);
     } 
     public function delete_cat($id, $conn)
@@ -45,5 +45,42 @@ class Product
         $sql = "DELETE FROM `tbl_product` WHERE `id` = '$id'";
         $result = $conn->query($sql);
     } 
+    public function update_cat($id, $name, $link, $conn)
+    {
+        $sql = "UPDATE `tbl_product` SET `prod_name`= '$name',`link`= '$link' WHERE `id` = '$id'";
+        $result = $conn->query($sql);
+    }
+    public function add_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $conn)
+    {
+        $sql = "INSERT INTO `tbl_product_description`(`prod_id`, `description`, `mon_price`, `annual_price`, `sku`) VALUES ('$prod_cat', '$description', '$mon_price', '$annual_price', '$sku')";
+        $result = $conn->query($sql);
+    } 
+    public function add_product_cat($cat, $sub_cat, $href, $conn)
+    {
+        $sql = "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `link`) VALUES ('$cat', '$sub_cat', '$href')";
+        $result = $conn->query($sql);
+    } 
+    public function fetch_cat_name($id, $conn) 
+    {
+        $sql = "select prod_name from `tbl_product` where `prod_parent_id` = '$id'";
+        $result = $conn->query($sql);
+        
+        if ($result == true) {
+            $name = $result->fetch_array()[0] ?? '';
+        }
+        return $name;
+    }
+    public function all_prod($conn) 
+    {
+        $a = array();
+        $sql = "SELECT * FROM `tbl_product` INNER JOIN `tbl_product_description` ON `tbl_product`.id = `tbl_product_description`.prod_id";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($a, $row);
+            }
+        }
+        return $a; 
+    }
 }
 ?>

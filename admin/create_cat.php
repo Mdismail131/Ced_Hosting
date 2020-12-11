@@ -9,12 +9,20 @@ if (isset($_POST['add_cat'])) {
     $sub_cat = $_POST['sub_cat'];
     $href = $_POST['link'];
     $sql = $prod->add_cat($sub_cat, $href, $db->conn);
-    echo "<script>windows.location.href='create_cat.php';</script>";
+    echo "<script>window.location.href='create_cat.php';</script>";
+}
+if (isset($_POST['update'])) {
+    $id = $_POST['id'];
+    $name = $_POST['prod_name'];
+    $link = $_POST['link'];
+    $sql = $prod->update_cat($id, $name, $link, $db->conn);
+    echo "<script>alert('Update Successfull');</script>";
+    echo "<script>window.location.href='create_cat.php';</script>";
 }
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
     $sql = $prod->delete_cat($id, $db->conn);
-    echo "<script>windows.location.href='create_cat.php';</script>";
+    echo "<script>window.location.href='create_cat.php';</script>";
 }
 ?>
     <!-- Header -->
@@ -117,18 +125,31 @@ if (isset($_POST['delete'])) {
                 foreach ($sql as $key => $val) {
                 ?>
                   <tr>
+                  <form method="post">
                     <th scope="row">
                     <?php echo $val['id']; ?>
                     </th>
                     <td>
                     <?php echo $val['prod_parent_id']; ?>
                     </td>
+                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {?>
+                      <td>
+                        <input type="text" name="prod_name" value="<?php echo $val['prod_name']; ?>">
+                      </td>
+                    <?php } else {?>
                     <td>
                     <?php echo $val['prod_name']; ?>
                     </td>
+                    <?php } ?>
+                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {?>
+                      <td>
+                        <input type="text" name="link" value="<?php echo $val['link']; ?>">
+                      </td>
+                    <?php } else {?>
                     <td>
                     <?php echo $val['link']; ?>
                     </td>
+                    <?php } ?>
                     </td>
                     <?php if ($val['prod_available'] == 1) {?>
                     <td>
@@ -143,11 +164,16 @@ if (isset($_POST['delete'])) {
                     <?php echo $val['prod_launch_date']; ?>
                     </td>
                     <td>
-                    <form method="post" class="d-inline"><button type="submit" name="delete" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-trash"></i></button></form>
-                    <form method="post" class="d-inline"><button type="submit" name="edit" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-edit"></i></button></form>
+                    <?php if (isset($_POST['edit'])) {?>
+                      <button type="submit" name="update" onClick="return confirm('Are you sure you wanna update?')" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-edit"></i></button>
+                    <?php } else {?>
+                      <button type="submit" name="edit" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-edit"></i></button>
+                    <?php } ?>
+                    <button type="submit" name="delete" onClick="return confirm('Are you sure you wanna delete this?')" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><input type="hidden" name="ppid" value="<?php echo $val['prod_parent_id']?>"><i class="fa fa-trash"></i></button>
                     </td>
-                <?php } ?>
+                  </form>
                   </tr>
+                <?php } ?>
                 </tbody>
               </table>
             </div>

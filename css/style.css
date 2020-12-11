@@ -1552,7 +1552,7 @@ a.button4:hover {
     font-family: 'Voltaire', sans-serif;
 }
 .register-top-grid div, .register-bottom-grid div {
-	width: 48%;
+    width: 48%;
 	float: left;
 	margin: 10px 0;
 }
