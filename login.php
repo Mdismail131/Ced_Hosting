@@ -1,6 +1,6 @@
 <?php
 /**
- * Header File.
+ * Login File.
  * PHP version 5
  * 
  * @category Components
@@ -32,8 +32,16 @@ require "header.php";
                     <div class="account_grid">
                         <div class="col-md-6 login-left">
                                 <h3>new customers</h3>
-                                <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-                                <a class="acount-btn" href="account.php">Create an Account</a>
+                                <p>
+                                    By creating an account with our store,
+                                    you will be able to move through the 
+                                    checkout process faster, store multiple 
+                                    shipping addresses, view and track your 
+                                    orders in your account and more.
+                                </p>
+                                <a class="acount-btn" href="account.php">
+                                    Create an Account
+                                </a>
                         </div>
                         <div class="col-md-6 login-right">
                             <h3>registered</h3>
@@ -41,17 +49,22 @@ require "header.php";
                             <form method="POST">
                                 <div>
                                 <span>Email Address<label>*</label></span>
-                                <input type="email" name="email" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$" required> 
+                                <input type="email" name="email" 
+                                pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]
+                                +(?:\.[a-zA-Z]+)*$" 
+                                required> 
                                 </div>
                                 <div>
                                 <span>Password<label>*</label></span>
-                                <input type="password" name="password" required> 
+                                <input type="password" name="password" 
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
+                                (?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" required> 
                                 </div>
                                 <a class="forgot" href="#">Forgot Your Password?</a>
                                 <input type="submit" name="login" value="Login">
                             </form>
-                        </div>	
-                        <div class="clearfix"> </div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>

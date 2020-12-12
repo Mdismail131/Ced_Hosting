@@ -34,6 +34,7 @@ if (isset($_POST['register'])) {
         echo "<script>alert('All Similar number not allowed')</script>";
     } else {
         $user->signup($name, $email, $mobile, $date, $password, $sec_ques, $sec_ans, $db->conn);
+        echo "<script>window.location.href='http://localhost/Ced_Hosting/verification.php'</script>";
     }
 }
 ?>
@@ -53,7 +54,7 @@ if (isset($_POST['register'])) {
                         <!-- pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" -->
                         <div>
                             <span>Email Address<label>*</label></span>
-                            <input type="email" name="email" pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" required> 
+                            <input type="email" name="email" pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" placeholder="ex: abc.125@example.com" required> 
                         </div>
                         <div>
                             <span>security question</span>
@@ -72,7 +73,7 @@ if (isset($_POST['register'])) {
                         </div>
                         <div>
                             <span>Mobile</span>
-                            <input type="text" name="mobile" pattern="^(|[0]){0,1}([7-9]{1})([0-9]{9})$" placeholder="10 digit mobile number" required> 
+                            <input type="text" name="mobile" pattern="^([0]){0,1}([7-9]{1})([0-9]{9})$" placeholder="10 digit mobile number" required> 
                         </div>
                         <div class="clearfix"> </div> 
                         <a class="news-letter" href="#">
@@ -83,11 +84,13 @@ if (isset($_POST['register'])) {
                                 <h3>login information</h3>
                                 <div>
                                     <span>Password<label>*</label></span>
-                                    <input type="password" name="password" required>
+                                    <input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" placeholder="ex: Password@123" required>
+                                    <span style="color: red">Note: Password Must Contain Uppercase-letter, Lowercase-letter and a special-character</span>
                                 </div>
                                 <div>
                                     <span>Confirm Password<label>*</label></span>
-                                    <input type="password" name="re-password" required>
+                                    <input type="password" name="re-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" placeholder="ex: Password@123" required>
+                                    <span style="color: red">Note: Password Must Contain Uppercase-letter, Lowercase-letter and a special-character</span>
                                 </div>
                         </div>
                     <div class="clearfix"> </div>

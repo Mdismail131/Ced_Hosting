@@ -11,12 +11,13 @@ if (isset($_POST['update'])) {
     $link = $_POST['link'];
     $sql = $prod->update_cat($id, $name, $link, $db->conn);
     echo "<script>alert('Update Successfull');</script>";
-    echo "<script>window.location.href='create_cat.php';</script>";
+    echo "<script>window.location.href='view_product.php';</script>";
 }
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
-    $sql = $prod->delete_cat($id, $db->conn);
-    echo "<script>window.location.href='create_cat.php';</script>";
+    $sql = $prod->delete_prod($id, $db->conn);
+    echo "<script>alert('Delete Successfull');</script>";
+    echo "<script>window.location.href='view_product.php';</script>";
 }
 ?>
 <div class="header bg-primary pb-6">
@@ -60,16 +61,16 @@ if (isset($_POST['delete'])) {
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Product Id</th>
-                            <th scope="col">Product Name</th>
                             <th scope="col">Category Name</th>
+                            <th scope="col">Product Name</th>
                             <th scope="col">Page URL</th>
-                            <th scope="col">Disc Space</th>
-                            <th scope="col">Bandwidth</th>
-                            <th scope="col">Free Domain</th>
                             <th scope="col">Monthly Price</th>
                             <th scope="col">Annual Price</th>
                             <th scope="col">SKU</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Disc Space</th>
+                            <th scope="col">Bandwidth</th>
+                            <th scope="col">Free Domain</th>
                             <th scope="col">Lang/Tech Support</th>
                             <th scope="col">Mailbox</th>
                             <th scope="col">Launch Date</th>
@@ -82,6 +83,7 @@ if (isset($_POST['delete'])) {
                         ?>
                             <tr>
                                 <form method="post">
+                                    
                                     <th scope="row">
                                         <?php echo $val['id']; ?>
                                     </th>
@@ -116,6 +118,42 @@ if (isset($_POST['delete'])) {
                                             <?php echo $val['link']; ?>
                                         </td>
                                     <?php } ?>
+                                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) { ?>
+                                        <td>
+                                            <input type="text" name="mon_price" value="<?php echo $val['mon_price']; ?>">
+                                        </td>
+                                    <?php } else { ?>
+                                        <td>
+                                            <?php echo $val['mon_price']; ?>
+                                        </td>
+                                    <?php } ?>
+                                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) { ?>
+                                        <td>
+                                            <input type="text" name="annual_price" value="<?php echo $val['annual_price']; ?>">
+                                        </td>
+                                    <?php } else { ?>
+                                        <td>
+                                            <?php echo $val['annual_price']; ?>
+                                        </td>
+                                    <?php } ?>
+                                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) { ?>
+                                        <td>
+                                            <input type="text" name="sku" value="<?php echo $val['sku']; ?>">
+                                        </td>
+                                    <?php } else { ?>
+                                        <td>
+                                            <?php echo $val['sku']; ?>
+                                        </td>
+                                    <?php } ?>
+                                    <?php if ($val['prod_available'] == 1) { ?>
+                                        <td>
+                                            <?php echo "Available"; ?>
+                                        </td>
+                                    <?php } else { ?>
+                                        <td>
+                                            <?php echo "UnAvailable"; ?>
+                                        </td>
+                                    <?php } ?>
                                     <?php
                                     $description = json_decode($val['description']);
                                     foreach ($description as $key1 => $descript) {
@@ -130,15 +168,6 @@ if (isset($_POST['delete'])) {
                                         </td>
                                     <?php } ?>
                                     <?php } ?>
-                                    <?php if ($val['prod_available'] == 1) { ?>
-                                        <td>
-                                            <?php echo "Available"; ?>
-                                        </td>
-                                    <?php } else { ?>
-                                        <td>
-                                            <?php echo "UnAvailable"; ?>
-                                        </td>
-                                    <?php } ?>
                                     <td>
                                         <?php echo $val['prod_launch_date']; ?>
                                     </td>
@@ -148,7 +177,7 @@ if (isset($_POST['delete'])) {
                                         <?php } else { ?>
                                             <button type="submit" name="edit" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id'] ?>"><i class="fa fa-edit"></i></button>
                                         <?php } ?>
-                                        <button type="submit" name="delete" onClick="return confirm('Are you sure you wanna delete this?')" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id'] ?>"><input type="hidden" name="ppid" value="<?php echo $val['prod_parent_id'] ?>"><i class="fa fa-trash"></i></button>
+                                        <button type="submit" name="delete" onClick="return confirm('Are you sure you wanna delete this?')" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['prod_id'] ?>"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </form>
                             </tr>

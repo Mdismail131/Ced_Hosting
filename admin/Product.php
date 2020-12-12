@@ -11,7 +11,7 @@
  * @link     https://yoursite.com
  */
 /**
- * DBconnection Class.
+ * Product Class.
  * PHP version 5
  * 
  * @category Product
@@ -44,6 +44,13 @@ class Product
     {
         $sql = "DELETE FROM `tbl_product` WHERE `id` = '$id'";
         $result = $conn->query($sql);
+    }
+    public function delete_prod($id, $conn)
+    {
+        $sql = "DELETE FROM `tbl_product` WHERE `prod_parent_id` = '$id'";
+        $conn->query($sql);
+        $sql1 = "DELETE FROM `tbl_product_description` WHERE `prod_id` = '$id'";
+        $conn->query($sql1);
     } 
     public function update_cat($id, $name, $link, $conn)
     {

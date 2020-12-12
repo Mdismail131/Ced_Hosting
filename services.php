@@ -1,4 +1,15 @@
 <?php
+/**
+ * Services File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 require "header.php";
 ?>
 <!--services--->
@@ -9,31 +20,45 @@ require "header.php";
                     <div class="brilliant-grids">
                         <div class="col-md-4 brilliant-grid">
                             <div class="brilliant-left">
-                            <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
+                            <i class="glyphicon glyphicon-cog"
+                             aria-hidden="true"></i>
                             </div>
                             <div class="brilliant-right">
                                 <h4>Expert Web Design</h4>
-                                <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                                <p>
+                                    We strive to deliver the very best possible work 
+                                    that’s available out there, at any time. 
+                                    That’s how we set ourselves apart.
+                                </p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-4 brilliant-grid">
                             <div class="brilliant-left">
-                            <i class="glyphicon glyphicon-cloud" aria-hidden="true"></i>
+                            <i class="glyphicon glyphicon-cloud" 
+                            aria-hidden="true"></i>
                             </div>
                             <div class="brilliant-right">
                                 <h4>ftp services</h4>
-                                <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                                <p>
+                                    We strive to deliver the very best possible work 
+                                    that’s available out there, at any time. 
+                                    That’s how we set ourselves apart.</p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-4 brilliant-grid">
                             <div class="brilliant-left">
-                            <i class="glyphicon glyphicon-signal" aria-hidden="true"></i>
+                            <i class="glyphicon glyphicon-signal"
+                             aria-hidden="true"></i>
                             </div>
                             <div class="brilliant-right">
                                 <h4>Support Service</h4>
-                                <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                                <p>
+                                    We strive to deliver the very best possible work 
+                                    that’s available out there, at any time.
+                                    That’s how we set ourselves apart.
+                                </p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -42,31 +67,45 @@ require "header.php";
                     <div class="brilliant-grids">
                         <div class="col-md-4 brilliant-grid">
                             <div class="brilliant-left">
-                            <i class="glyphicon glyphicon-globe" aria-hidden="true"></i>
+                            <i class="glyphicon glyphicon-globe" 
+                            aria-hidden="true"></i>
                             </div>
                             <div class="brilliant-right">
                                 <h4>multi domain</h4>
-                                <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                                <p>
+                                    We strive to deliver the very best possible work 
+                                    that’s available out there, at any time. 
+                                    That’s how we set ourselves apart.</p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-4 brilliant-grid">
                             <div class="brilliant-left">
-                            <i class="glyphicon glyphicon-link" aria-hidden="true"></i>
+                            <i class="glyphicon glyphicon-link" 
+                            aria-hidden="true"></i>
                             </div>
                             <div class="brilliant-right">
                                 <h4>Link Building</h4>
-                                <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                                <p>
+                                    We strive to deliver the very best possible work 
+                                    that’s available out there, at any time. 
+                                    That’s how we set ourselves apart.
+                                </p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-4 brilliant-grid">
                             <div class="brilliant-left">
-                            <i class="glyphicon glyphicon-phone" aria-hidden="true"></i>
+                            <i class="glyphicon glyphicon-phone" 
+                            aria-hidden="true"></i>
                             </div>
                             <div class="brilliant-right">
                                 <h4>Mobile Optimization</h4>
-                                <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                                <p>
+                                    We strive to deliver the very best possible work 
+                                    that’s available out there, at any time. 
+                                    That’s how we set ourselves apart.
+                                </p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -83,20 +122,38 @@ require "header.php";
                         <div class="col-md-6 feature-grid">
                             <h4>Suspendisse sollicitudin velit sed leo</h4>
                             <div class="feat1">
-                                <img src="images/s1.jpg" class="img-responsive" alt=""/>
+                                <img src="images/s1.jpg" 
+                                class="img-responsive" alt=""/>
                             </div>
                             <div class="feat2">
-                            <p>Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.…</p>
+                            <p>
+                                Aliquam dapibus tincidunt metus. 
+                                Praesent justo dolor, lobortis quis, 
+                                lobortis dignissim, pulvinar ac, lorem.
+                                Lorem ipsum dolor sit amet, 
+                                consectetuer adipiscing elit.
+                                Praesent vestibulum molestie lacus. 
+                                Aenean nonummy hendrerit mauris.…
+                            </p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-6 feature-grid">
                             <h4>Donec in velit vel ipsum auctor pulvinar</h4>
                             <div class="feat1">
-                                <img src="images/s2.jpg" class="img-responsive" alt=""/>
+                                <img src="images/s2.jpg" 
+                                class="img-responsive" alt=""/>
                             </div>
                             <div class="feat2">
-                            <p>Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.…</p>
+                            <p>
+                                Aliquam dapibus tincidunt metus. 
+                                Praesent justo dolor, lobortis quis, 
+                                lobortis dignissim, pulvinar ac, lorem. 
+                                Lorem ipsum dolor sit amet, 
+                                consectetuer adipiscing elit. 
+                                Praesent vestibulum molestie lacus. 
+                                Aenean nonummy hendrerit mauris.…
+                            </p>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -105,20 +162,38 @@ require "header.php";
                         <div class="col-md-6 feature-grid">
                             <h4>Ut pharetra augue nec augue</h4>
                             <div class="feat1">
-                                <img src="images/s3.jpg" class="img-responsive" alt=""/>
+                                <img src="images/s3.jpg" 
+                                class="img-responsive" alt=""/>
                             </div>
                             <div class="feat2">
-                            <p>Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.…</p>
+                            <p>
+                                Aliquam dapibus tincidunt metus. 
+                                Praesent justo dolor, lobortis quis, 
+                                lobortis dignissim, pulvinar ac, lorem. 
+                                Lorem ipsum dolor sit amet, 
+                                consectetuer adipiscing elit. 
+                                Praesent vestibulum molestie lacus. 
+                                Aenean nonummy hendrerit mauris.…
+                            </p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-6 feature-grid">
                             <h4>Donec porta diam eu massa</h4>
                             <div class="feat1">
-                                <img src="images/s4.jpg" class="img-responsive" alt=""/>
+                                <img src="images/s4.jpg" 
+                                class="img-responsive" alt=""/>
                             </div>
                             <div class="feat2">
-                            <p>Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.…</p>
+                            <p>
+                                Aliquam dapibus tincidunt metus. 
+                                Praesent justo dolor, lobortis quis, 
+                                lobortis dignissim, pulvinar ac, lorem.
+                                Lorem ipsum dolor sit amet, 
+                                consectetuer adipiscing elit. 
+                                Praesent vestibulum molestie lacus. 
+                                Aenean nonummy hendrerit mauris.…
+                            </p>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -135,7 +210,12 @@ require "header.php";
                                     <div class="Consulting">
                                     <h4>Consulting Services</h4>
                                     </div>
-                                    <p>Bulum iaculis lacinia est. Proin dictum elemntum velit fusce euismod consequat ante lorem ipsum dolomet consectetuer</p>
+                                    <p>
+                                        Bulum iaculis lacinia est. 
+                                        Proin dictum elemntum velit fusce euismod 
+                                        consequat ante lorem ipsum 
+                                        dolomet consectetuer
+                                    </p>
                                     <ul>
                                         <li>Online Business Consulting</li>
                                         <li>Marketing Consulting</li>
@@ -153,7 +233,12 @@ require "header.php";
                                     <div class="Consulting">
                                     <h4>Marketing Services</h4>
                                     </div>
-                                    <p>Bulum iaculis lacinia est. Proin dictum elemntum velit fusce euismod consequat ante lorem ipsum dolomet consectetuer</p>
+                                    <p>
+                                        Bulum iaculis lacinia est. 
+                                        Proin dictum elemntum velit 
+                                        fusce euismod consequat ante 
+                                        lorem ipsum dolomet consectetuer
+                                    </p>
                                     <ul>
                                         <li>Search Engine Optimization</li>
                                         <li>Social Media Marketing</li>
@@ -171,7 +256,12 @@ require "header.php";
                                     <div class="Consulting">
                                     <h4>Design & Development</h4>
                                     </div>
-                                    <p>Bulum iaculis lacinia est. Proin dictum elemntum velit fusce euismod consequat ante lorem ipsum dolomet consectetuer</p>
+                                    <p>
+                                        Bulum iaculis lacinia est.
+                                        Proin dictum elemntum velit 
+                                        fusce euismod consequat ante lorem 
+                                        ipsum dolomet consectetuer
+                                    </p>
                                     <ul>
                                         <li>Website Design</li>
                                         <li>Graphic Design</li>

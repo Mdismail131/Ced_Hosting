@@ -1,6 +1,6 @@
 <?php
 /**
- * Header File.
+ * Index File.
  * PHP version 5
  * 
  * @category Components
@@ -22,7 +22,12 @@ require "header.php";
             </div>
             <div class="col-md-6 banner-grid">
                 <h3>Unlimited Web Hosting</h3>
-                <p>this hero area to show off some of your nice work. You can even have a video inside it since it’s great as a secondary call to action alongside this button underneath this text.</p>
+                <p>
+                    this hero area to show off some of your nice work.
+                    You can even have a video inside it since it’s great as 
+                    a secondary call to action alongside this button underneath 
+                    this text.
+                </p>
                 <a href="#" class="button">get started</a>
             </div>
             <div class="clearfix"></div>
@@ -43,7 +48,11 @@ require "header.php";
                         </div>
                         <div class="brilliant-right">
                             <h4>Expert Web Design</h4>
-                            <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                            <p>
+                                We strive to deliver the very best possible 
+                                work that’s available out there, at any time. 
+                                That’s how we set ourselves apart.
+                            </p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -53,7 +62,11 @@ require "header.php";
                         </div>
                         <div class="brilliant-right">
                             <h4>ftp services</h4>
-                            <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                            <p>
+                                We strive to deliver the very best possible work 
+                                that’s available out there, at any time. 
+                                That’s how we set ourselves apart.
+                            </p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -63,7 +76,11 @@ require "header.php";
                         </div>
                         <div class="brilliant-right">
                             <h4>Support Service</h4>
-                            <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                            <p>
+                                We strive to deliver the very best possible work 
+                                that’s available out there, at any time. 
+                                That’s how we set ourselves apart.
+                            </p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -76,7 +93,11 @@ require "header.php";
                         </div>
                         <div class="brilliant-right">
                             <h4>multi domain</h4>
-                            <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                            <p>
+                                We strive to deliver the very best 
+                                possible work that’s available out there, 
+                                at any time. That’s how we set ourselves apart.
+                            </p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -86,7 +107,11 @@ require "header.php";
                         </div>
                         <div class="brilliant-right">
                             <h4>Link Building</h4>
-                            <p>We strive to deliver the very best possible work that’s available out there, at any time. That’s how we set ourselves apart.</p>
+                            <p>
+                                We strive to deliver the very best possible work 
+                                that’s available out there, at any time. 
+                                That’s how we set ourselves apart.
+                            </p>
                         </div>
                         <div class="clearfix"></div>
                     </div>

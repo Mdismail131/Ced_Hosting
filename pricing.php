@@ -1,4 +1,15 @@
 <?php
+/**
+ * Pricing File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 require "header.php";
 ?>
 <!---prices--->
@@ -171,7 +182,12 @@ require "header.php";
                                 <h5>$12.99/<span>month</span></h5>
                             </div>
                             <div class="simple-right">
-                                <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet conse 
+                                    ctetur adipisicing elit, sed do eiusmod 
+                                    tempor incididunt ut labore et dolore 
+                                    magna aliqua. 
+                                </p>
                                 <a href="#">shop now</a>
                             </div>
                             <div class="clearfix"></div>
@@ -182,7 +198,11 @@ require "header.php";
                                 <h5>$12.99/<span>month</span></h5>
                             </div>
                             <div class="simple-right">
-                                <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p>Lorem ipsum dolor sit amet conse 
+                                    ctetur adipisicing elit, 
+                                    sed do eiusmod tempor incididunt ut 
+                                    labore et dolore magna aliqua. 
+                                </p>
                                 <a href="#">shop now</a>
                             </div>
                             <div class="clearfix"></div>
@@ -196,7 +216,10 @@ require "header.php";
                                 <h5>$19.99 /<span>month</span></h5>
                             </div>
                             <div class="simple-right">
-                                <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p>Lorem ipsum dolor sit amet conse ctetur 
+                                    adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. 
+                                </p>
                                 <a href="#">shop now</a>
                             </div>
                             <div class="clearfix"></div>
@@ -207,7 +230,12 @@ require "header.php";
                                 <h5>$29.99 /<span>month</span></h5>
                             </div>
                             <div class="simple-right">
-                                <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet 
+                                    conse ctetur adipisicing elit, 
+                                    sed do eiusmod tempor incididunt 
+                                    ut labore et dolore magna aliqua.
+                                </p>
                                 <a href="#">shop now</a>
                             </div>
                             <div class="clearfix"></div>
