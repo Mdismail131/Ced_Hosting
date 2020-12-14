@@ -15,6 +15,8 @@ require "admin/Dbcon.php";
 // session_destroy();
 if (isset($_SESSION['user'])) {
     header('Location: http://localhost/Ced_Hosting/index.php');
+} elseif (isset($_SESSION['admin'])) {
+    header('Location: http://localhost/Ced_Hosting/admin/index.php');
 }
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -50,15 +52,12 @@ require "header.php";
                                 <div>
                                 <span>Email Address<label>*</label></span>
                                 <input type="email" name="email" 
-                                pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]
-                                +(?:\.[a-zA-Z]+)*$" 
+                                pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$"
                                 required> 
                                 </div>
                                 <div>
                                 <span>Password<label>*</label></span>
-                                <input type="password" name="password" 
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
-                                (?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" required> 
+                                <input type="password" name="password" required> 
                                 </div>
                                 <a class="forgot" href="#">Forgot Your Password?</a>
                                 <input type="submit" name="login" value="Login">

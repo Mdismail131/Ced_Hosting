@@ -47,10 +47,8 @@ class Product
     }
     public function delete_prod($id, $conn)
     {
-        $sql = "DELETE FROM `tbl_product` WHERE `prod_parent_id` = '$id'";
+        $sql = "DELETE tbl_product, tbl_product_description FROM `tbl_product_description` INNER JOIN `tbl_product` ON tbl_product_description.prod_id = tbl_product.id WHERE `prod_id`='$id'";
         $conn->query($sql);
-        $sql1 = "DELETE FROM `tbl_product_description` WHERE `prod_id` = '$id'";
-        $conn->query($sql1);
     } 
     public function update_cat($id, $name, $link, $conn)
     {
@@ -60,6 +58,16 @@ class Product
     public function add_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $conn)
     {
         $sql = "INSERT INTO `tbl_product_description`(`prod_id`, `description`, `mon_price`, `annual_price`, `sku`) VALUES ('$prod_cat', '$description', '$mon_price', '$annual_price', '$sku')";
+        $result = $conn->query($sql);
+    }
+    public function update_prod($id, $prod_cat, $description, $mon_price, $annual_price, $sku, $conn)
+    {
+        $sql = "INSERT INTO `tbl_product_description`(`prod_id`, `description`, `mon_price`, `annual_price`, `sku`) VALUES ('$prod_cat', '$description', '$mon_price', '$annual_price', '$sku')";
+        $result = $conn->query($sql);
+    }
+    public function update_product_cat($id, $name, $link, $conn)
+    {
+        $sql = "UPDATE `tbl_product` SET `prod_name`= '$name',`link`= '$link' WHERE `prod_id` = '$id'";
         $result = $conn->query($sql);
     } 
     public function add_product_cat($cat, $sub_cat, $href, $conn)
@@ -88,6 +96,25 @@ class Product
             }
         }
         return $a; 
+    }
+    public function drop_down($conn)
+    {
+        $a = array();
+        $sql = "SELECT * FROM `tbl_product`";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($a, $row);
+            }
+        }
+        return $a; 
+    }
+    public function fetch_prod($id, $conn) 
+    {
+        $sql = "SELECT * FROM `tbl_product_description` INNER JOIN `tbl_product` ON `tbl_product`.id = `tbl_product_description`.prod_id WHERE `prod_id` = '$id'";
+        $result = $conn->query($sql);
+        $row = mysqli_fetch_assoc($result);
+        return $row; 
     }
 }
 ?>

@@ -29,17 +29,6 @@ if (isset($_POST['create'])) {
     $add_cat = $prod->add_product_cat($prod_cat, $prod_name, $url, $db->conn);
     $add_prod = $prod->add_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $db->conn);
 }
-// if (isset($_POST['add_cat'])) {
-//     $sub_cat = $_POST['sub_cat'];
-//     $href = $_POST['link'];
-//     $sql = $prod->add_cat($sub_cat, $href, $db->conn);
-//     echo "<script>windows.location.href='create_cat.php';</script>";
-// }
-// if (isset($_POST['delete'])) {
-//     $id = $_POST['id'];
-//     $sql = $prod->delete_cat($id, $db->conn);
-//     echo "<script>windows.location.href='create_cat.php';</script>";
-// }
 ?>
     <!-- Header -->
     <div class="header bg-primary pb-6">
@@ -50,7 +39,9 @@ if (isset($_POST['create'])) {
               <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item">
+                    <a href="#"><i class="fas fa-home"></i></a>
+                  </li>
                   <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Default</li>
                 </ol>
@@ -71,7 +62,7 @@ if (isset($_POST['create'])) {
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h1 class="mb-0">Create New Product</h1>
+                  <h1 class="mb-0">Add New Product</h1>
                   <h3 class="mb-0">Enter Product Details</h3>
                 </div>
                 <div class="col text-right">
@@ -85,26 +76,39 @@ if (isset($_POST['create'])) {
             <form method="post">
                 <div class="p-4 bg-secondary">
                   <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select Product Category<sup class="text-danger ml-2">*</sup></label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="prod_cat">
+                    <label for="exampleFormControlSelect1">
+                      Select Product Category<sup class="text-danger ml-2">*</sup>
+                    </label>
+                    <select class="form-control" 
+                    id="exampleFormControlSelect1" name="prod_cat">
                         <option>Please Select</option>
                         <?php 
                         foreach ($sql as $key => $val) {
-                            if ($val['prod_parent_id'] != 0) {
+                            if ($val['prod_parent_id'] == 1) {
                         ?>
-                        <option value="<?php echo $val['id']; ?>"><?php echo $val['prod_name']; ?></option>
-                        <?php }
+                        <option value="<?php echo $val['id']; ?>">
+                            <?php echo $val['prod_name']; ?>
+                        </option>
+                            <?php }
                         } ?>
                     </select>
                   </div>
                 </div>
                 <div class="p-4 bg-secondary">
-                    <label for="exampleFormControlSelect1">Enter Product Name<sup class="text-danger ml-2">*</sup></label>
-                    <input type="text" class="form-control form-control-alternative" name="prod_name" placeholder="Product Name">
+                    <label for="exampleFormControlSelect1">
+                        Enter Product Name<sup class="text-danger ml-2">*</sup>
+                    </label>
+                    <input type="text" id="prod_name" 
+                    onblur="errors(this.id)" 
+                    class="form-control form-control-alternative"
+                    name="prod_name" placeholder="Product Name">
+                    <div id="prod_nameError"></div>
                 </div>
                 <div class="p-4 bg-secondary">
                     <label for="exampleFormControlSelect1">Page URL</label>
-                    <input type="text" class="form-control form-control-alternative" name="page_url" placeholder="Page URL">
+                    <input type="text" 
+                    class="form-control form-control-alternative" 
+                    name="page_url" placeholder="Page URL">
                 </div>
                 <hr class="line">
                 <div class="card-header border-0">
@@ -119,18 +123,35 @@ if (isset($_POST['create'])) {
             </div>
             <hr>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Enter Monthly Price<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="mon_price" placeholder="ex: 23">
+                <label for="exampleFormControlSelect1">
+                  Enter Monthly Price<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="number" step="0.01" name="mon_price" 
+                id="mon_price" onblur="errors(this.id)" 
+                class="form-control" min="0" maxlength=15 
+                placeholder="ex:23" required>
+                <div id="mon_priceError"></div>
                 <h5 class="text-muted mt-2">This would be Monthly Plan</h5>
             </div>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Enter Annual Price<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="annual_price" placeholder="ex: 23">
+                <label for="exampleFormControlSelect1">
+                  Enter Annual Price<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="number" step="0.01" name="annual_price"
+                id="annual_price" onblur="errors(this.id)" 
+                class="form-control" min="0" maxlength=15 
+                placeholder="ex:23" required>
+                <div id="annual_priceError"></div>
                 <h5 class="text-muted mt-2">This would be Annual Plan</h5>
             </div>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">SKU<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="sku">
+                <label for="exampleFormControlSelect1">
+                  SKU<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="text" name="sku" id="sku" 
+                onblur="errors(this.id)" class="form-control" 
+                min="0" maxlength=15 required>
+                <div id="skuError"></div>
             </div>
             <hr class="line">
             <div class="card-header border-0">
@@ -142,103 +163,64 @@ if (isset($_POST['create'])) {
             </div>
             <hr>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Web Spaces (in GB)<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="web_space">
+                <label for="exampleFormControlSelect1">
+                  Web Spaces (in GB)<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="text" id="web_space" onblur="errors(this.id)" 
+                class="form-control form-control-alternative" name="web_space">
+                <div id="web_space"></div>
                 <h5 class="text-muted mt-2">Enter 0.5 for 512 MB</h5>
             </div>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Bandwidth (in GB)<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="bandwidth">
+                <label for="exampleFormControlSelect1">
+                  Bandwidth (in GB)<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="text" id="bandwidth" onblur="errors(this.id)" 
+                class="form-control form-control-alternative" name="bandwidth">
+                <div id="bandwidth"></div>
                 <h5 class="text-muted mt-2">Enter 0.5 for 512 MB</h5>
             </div>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Free Domain<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="domain">
-                <h5 class="text-muted mt-2">Enter 0 if no domain available in this service</h5>
+                <label for="exampleFormControlSelect1">
+                  Free Domain<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="text" id="domain" onblur="errors(this.id)" 
+                class="form-control form-control-alternative" name="domain">
+                <div id="domain"></div>
+                <h5 class="text-muted mt-2">
+                  Enter 0 if no domain available in this service
+                </h5>
             </div>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Language/Technology Support<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="techno">
-                <h5 class="text-muted mt-2">Separate by (,) Ex: PHP, MySQL, MongoDB</h5>
+                <label for="exampleFormControlSelect1">
+                  Language/Technology Support<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="text" id="techno" onblur="errors(this.id)" 
+                class="form-control form-control-alternative" name="techno">
+                <div id="techno"></div>
+                <h5 class="text-muted mt-2">
+                  Separate by (,) Ex: PHP, MySQL, MongoDB
+                </h5>
             </div>
             <div class="p-4 bg-secondary">
-                <label for="exampleFormControlSelect1">Mailbox<sup class="text-danger ml-2">*</sup></label>
-                <input type="text" class="form-control form-control-alternative" name="mail">
-                <h5 class="text-muted mt-2">Enter Number of mailbox will be provided, enter 0 if none</h5>
+                <label for="exampleFormControlSelect1">
+                  Mailbox<sup class="text-danger ml-2">*</sup>
+                </label>
+                <input type="text" id="mail" onblur="errors(this.id)" 
+                class="form-control form-control-alternative" name="mail">
+                <div id="mail"></div>
+                <h5 class="text-muted mt-2">
+                  Enter Number of mailbox will be provided, enter 0 if none
+                </h5>
             </div>
             <div class="p-4 bg-secondary text-center">
-              <button type="submit" class="btn btn-success" name="create">Create New</button>
+              <button type="submit" class="btn btn-success" name="create">
+                Create New
+              </button>
             </div>
             </form>
           </div>
         </div>
-        <!-- <div class="col-xl-12">
-          <div class="card">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Categories</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                </div>
-              </div>
-            </div>
-            <div class="table-responsive"> -->
-              <!-- Projects table -->
-            <!-- <table class="table align-items-center table-flush display" id="table_id">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Category Id</th>
-                    <th scope="col">Category Parent Id</th>
-                    <th scope="col">Category Name</th>
-                    <th scope="col">Category href</th>
-                    <th scope="col">Category availability</th>
-                    <th scope="col">Category Launch Date</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php 
-                foreach ($sql as $key => $val) {
-                ?>
-                  <tr>
-                    <th scope="row">
-                    <?php echo $val['id']; ?>
-                    </th>
-                    <td>
-                    <?php echo $val['prod_parent_id']; ?>
-                    </td>
-                    <td>
-                    <?php echo $val['prod_name']; ?>
-                    </td>
-                    <td>
-                    <?php echo $val['link']; ?>
-                    </td>
-                    </td>
-                    <?php if ($val['prod_available'] == 1) {?>
-                    <td>
-                    <?php echo "Available"; ?>
-                    </td>
-                    <?php } else { ?>
-                    <td>
-                    <?php echo "UnAvailable"; ?>
-                    </td>
-                    <?php } ?>
-                    <td>
-                    <?php echo $val['prod_launch_date']; ?>
-                    </td>
-                    <td>
-                    <form method="post" class="d-inline"><button type="submit" name="delete" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-trash"></i></button></form>
-                    <form method="post" class="d-inline"><button type="submit" name="edit" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-edit"></i></button></form>
-                    </td>
-                <?php } ?>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div> -->
     </div>
 <?php
 require "footer.php";

@@ -18,6 +18,8 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $user->active($id, $db->conn);
 } else {
-    echo "<script>window.location.href='http://localhost/Ced_Hosting/index.php'</script>";
+    echo "<script>
+            window.location.href='http://localhost/Ced_Hosting/index.php'
+        </script>";
 }
 ?>

@@ -33,7 +33,8 @@ if (isset($_POST['submit'])) {
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => json_encode($fields),
         CURLOPT_HTTPHEADER => array(
-            "authorization: a9tMThvdo0l8Ie6mXFA3VQsJRK2rLbBWDSfnHNYqE4wOiZkpgG7upVH9jmLoIsYQTDqh32aicfe5Wnt8",
+            "authorization: a9tMThvdo0l8Ie6mXFA3VQsJRK2rLbBWDSfnHN
+                            YqE4wOiZkpgG7upVH9jmLoIsYQTDqh32aicfe5Wnt8",
             "accept: */*",
             "cache-control: no-cache",
             "content-type: application/json"
@@ -67,9 +68,14 @@ if (isset($_POST['verify'])) {
 <html>
     <head>
         <title>CEDCAB</title>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA
+        /GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js
+        /1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K
+        /ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/
+        jquery.min.js"></script>
        <link rel="stylesheet" href="signstyle.css">
         <script>
             
@@ -88,20 +94,31 @@ if (isset($_POST['verify'])) {
                 <img class="mb-2" src="logo2.png" style="width:150px;" alt="Logo" >
                 <h1><sign-up>Let's start</sign-up></h1>
                 <div class="form-input-material">
-                    <input type="number" name="number" id="mobile" maxlength = "10" minlength = "10" placeholder="Please Enter your Mobile Number" autocomplete="off"  required />
+                    <input type="number" name="number" id="mobile" maxlength = "10" 
+                    minlength = "10" placeholder="Please Enter your Mobile Number" 
+                    autocomplete="off"  required />
                 </div>
-                <button type="submit" name="submit" id="sign-up" class="btn btn-primary btn-ghost">Send OTP</button>
+                <button type="submit" name="submit" id="sign-up" 
+                class="btn btn-primary btn-ghost">
+                    Send OTP
+                </button>
                 <div id="val" class="pt-3 cyan-text"><?php echo "<b>".$msg."</b>" ?></div>
                 <a>OR<a>
-                <a class="btn btn-primary btn-ghost" href="index.php">Back To Main Page</a>
+                <a class="btn btn-primary btn-ghost" href="index.php">
+                    Back To Main Page
+                </a>
             </form>
             <?php if (isset($_POST['submit'])) {?>
             <form action="mobile.php" method="POST" class="login-form1" >
                 <h1><sign-up>Enter OTP HERE</sign-up></h1>
                 <div class="form-input-material">
-                        <input type="number" name="otp" id="mobile" maxlength = "10" minlength = "10" placeholder="OTP" autocomplete="off"  />
+                        <input type="number" name="otp" id="mobile" maxlength = "10" 
+                        minlength = "10" placeholder="OTP" autocomplete="off"  />
                 </div>
-                <button type="submit" name="verify" id="sign-up" class="btn btn-primary btn-ghost">Enter OTP</button>
+                <button type="submit" name="verify" id="sign-up" 
+                class="btn btn-primary btn-ghost">
+                    Enter OTP
+                </button>
             </form> 
             <?php } ?>   
        </div>

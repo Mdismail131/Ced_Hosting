@@ -37,12 +37,32 @@
   <!-- Optional JS -->
   <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="custom.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
   <script>
   $(document).ready( function () {
     $('#table_id').DataTable();
-  } );
+    function errors(id) {
+      var input = document.getElementById(id);
+      var inputValue = input.value;
+      if (input.id == "mon_price") {
+          if (input.value.length > input.maxLength) input.value = input.value.slice(0, input.maxLength);
+      }
+      if (inputValue == '') {
+          input.classList.add('div-error');
+          var error = id+"Error";
+          document.getElementById(error).innerHTML = '<div class="form-error-message"><i class="fa fa-exclamation-circle"></i> This field is required.</div>';
+          document.getElementById("submit").setAttribute("disabled", "true");
+      }
+      else {
+          var error = id+"Error";
+          document.getElementById(error).innerHTML= '';
+          input.classList.remove('div-error');
+          document.getElementById("submit").removeAttribute("disabled");
+      }
+    } 
+} );
   </script>
 </body>
 
