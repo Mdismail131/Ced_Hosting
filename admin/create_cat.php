@@ -64,7 +64,7 @@ if (isset($_POST['delete'])) {
                 </div>
               </div>
             </div>
-            <form action="" method="post">
+            <form method="post">
                 <div class="p-4 bg-secondary">
                     <label>
                         Category:
@@ -80,7 +80,7 @@ if (isset($_POST['delete'])) {
                     <label>
                         Sub-Category:
                     </label>
-                    <input type="text" class="form-control form-control-alternative" name="sub_cat" placeholder="Sub Category">
+                    <input type="text" class="form-control form-control-alternative" name="sub_cat" id="sub_cat" pattern="^[a-zA-Z ]*$" placeholder="Sub Category">
                 </div>
                 <div class="p-4 bg-secondary">
                     <label>
@@ -123,6 +123,7 @@ if (isset($_POST['delete'])) {
                 <tbody>
                 <?php 
                 foreach ($sql as $key => $val) {
+                    if ($val['prod_parent_id'] == 1) {
                 ?>
                   <tr>
                   <form method="post">
@@ -173,7 +174,8 @@ if (isset($_POST['delete'])) {
                     </td>
                   </form>
                   </tr>
-                <?php } ?>
+                    <?php }
+                } ?>
                 </tbody>
               </table>
             </div>

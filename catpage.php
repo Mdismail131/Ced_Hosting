@@ -11,6 +11,9 @@
  * @link     https://yoursite.com
  */
 require "header.php";
+$prod = new Product();
+$all_prod = $prod->all_prod($db->conn);
+$cat = $prod->fetch_cat_name($_GET['id'], $db->conn);
 ?>
 <!---singleblog--->
 <div class="content">
@@ -18,34 +21,11 @@ require "header.php";
         <div class="container">
             <div class="linux-grids">
                 <div class="col-md-8 linux-grid">
-                <h2>Linux Hosting</h2>
-                <ul>
-                    <li>
-                        <span>Unlimited </span> 
-                        Domains, Disk Space, Bandwidth 
-                        and Email Addresses
-                    </li>
-                    <li>
-                        <span>99.9% uptime </span>
-                        with dedicated 24/7 technical 
-                        support
-                    </li>
-                    <li>
-                        <span>Powered by </span> 
-                        CloudLinux, cPanel (demo), 
-                        Apache, MySQL, PHP, Ruby & more
-                    </li>
-                    <li>
-                        <span>Launch  </span> 
-                        your business with Rs. 2000* Google AdWords Credit *
-                    </li>
-                    <li><span>30 day </span> Money Back Guarantee</li>
-                </ul>
-                    <a href="#">view plans</a>
-                </div>
-                <div class="col-md-4 linux-grid1">
-                    <img src="images/linux.png" class="img-responsive" alt=""/>
-                </div>
+                <?php foreach ($all_prod as $key => $val) { 
+                    if ($_GET['id'] == $val['prod_id']) {
+                        $description = json_decode($val['description']);?>
+                <h2><?php echo $val['prod_name']; ?></h2>
+                <?php echo $val['link']; ?>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -74,18 +54,18 @@ require "header.php";
                         <div class="linux-prices">
                             <div class="col-md-3 linux-price">
                                 <div class="linux-top">
-                                <h4>Standard</h4>
+                                <h4><?php echo $cat ?></h4>
                                 </div>
                                 <div class="linux-bottom">
-                                    <h5>$279 
+                                    <h5>₹ <?php echo $val['mon_price']; ?>
                                         <span class="month">per month</span>
                                     </h5>
-                                    <h6>Single Domain</h6>
+                                    <h6>Domain: <?php echo $description->domain; ?></h6>
                                     <ul>
-                                    <li><strong>Unlimited</strong> Disk Space</li>
-                                    <li><strong>Unlimited</strong> Data Transfer</li>
+                                    <li><strong> <?php echo $description->web_space; ?></strong> Disk Space</li>
+                                    <li><strong> <?php echo $description->bandwidth; ?></strong> Data Transfer</li>
                                     <li>
-                                        <strong>Unlimited</strong> Email Accounts
+                                        <strong> <?php echo $description->mail; ?></strong> Email Accounts
                                     </li>
                                     <li><strong>Includes </strong>  Global CDN</li>
                                     <li><strong>High Performance</strong>Servers</li>
@@ -97,98 +77,8 @@ require "header.php";
                                 </div>
                                 <a href="#">buy now</a>
                             </div>
-                            <div class="col-md-3 linux-price">
-                                <div class="linux-top">
-                                <h4>Advanced</h4>
-                                </div>
-                                <div class="linux-bottom">
-                                    <h5>$279 
-                                        <span class="month">per month</span>
-                                    </h5>
-                                    <h6>2 Domain</h6>
-                                    <ul>
-                                    <li><strong>Unlimited</strong> Disk Space</li>
-                                    <li><strong>Unlimited</strong> Data Transfer</li>
-                                    <li>
-                                        <strong>Unlimited</strong> 
-                                        Email Accounts</li>
-                                    <li><strong>Includes </strong>  Global CDN</li>
-                                    <li>
-                                        <strong>High Performance</strong>
-                                        Servers
-                                    </li>
-                                    <li>
-                                        <strong>location</strong> 
-                                        : <img src="images/india.png">
-                                    </li>
-                                    </ul>
-                                </div>
-                                <a href="#">buy now</a>
-                            </div>
-                            <div class="col-md-3 linux-price">
-                                <div class="linux-top">
-                                <h4>Business</h4>
-                                </div>
-                                <div class="linux-bottom">
-                                    <h5>$279 
-                                        <span class="month">per month</span>
-                                    </h5>
-                                    <h6>3 Domain</h6>
-                                    <ul>
-                                    <li><strong>Unlimited</strong> Disk Space</li>
-                                    <li><strong>Unlimited</strong> Data Transfer</li>
-                                    <li>
-                                        <strong>Unlimited</strong>
-                                        Email Accounts
-                                    </li>
-                                    <li>
-                                        <strong>Includes </strong>
-                                        Global CDN
-                                    </li>
-                                    <li>
-                                        <strong>High Performance</strong>
-                                        Servers
-                                    </li>
-                                    <li>
-                                        <strong>location</strong> 
-                                        : <img src="images/india.png">
-                                    </li>
-                                    </ul>
-                                </div>
-                                <a href="#">buy now</a>
-                            </div>
-                            <div class="col-md-3 linux-price">
-                                <div class="linux-top">
-                                <h4>Pro</h4>
-                                </div>
-                                <div class="linux-bottom">
-                                    <h5>$259 
-                                        <span class="month">per month</span>
-                                    </h5>
-                                    <h6>Unlimited Domains</h6>
-                                    <ul>
-                                    <li><strong>Unlimited</strong> Disk Space</li>
-                                    <li><strong>Unlimited</strong> Data Transfer</li>
-                                    <li>
-                                        <strong>Unlimited</strong> 
-                                        Email Accounts
-                                    </li>
-                                    <li>
-                                        <strong>Includes </strong>
-                                        Global CDN
-                                    </li>
-                                    <li>
-                                        <strong>High Performance</strong>
-                                          Servers
-                                    </li>
-                                    <li>
-                                        <strong>location</strong> 
-                                        : <img src="images/india.png">
-                                    </li>
-                                    </ul>
-                                </div>
-                                <a href="#">buy now</a>
-                            </div>
+                                <?php } ?>
+                            <?php } ?>
                             <div class="clearfix"></div>
                         </div>
                     </div>

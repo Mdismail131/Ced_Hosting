@@ -11,7 +11,7 @@
  * @link     https://yoursite.com
  */
 require "admin/User.php";
-require "admin/Dbcon.php";
+// require "admin/Dbcon.php";
 require "header.php";
 $user = new User();
 if (isset($_POST['email_ver'])) {

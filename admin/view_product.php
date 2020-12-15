@@ -7,6 +7,7 @@ $prod = new Product();
 $sql = $prod->all_prod($db->conn);
 if (isset($_POST['update'])) {
     $feature = array();
+    $id = $_POST['id'];
     $prod_cat = $_POST['prod_cat'];
     $prod_name = $_POST['prod_name'];
     $url = $_POST['page_url'];
@@ -26,8 +27,10 @@ if (isset($_POST['update'])) {
         'mail' => $mail
     );
     $description = json_encode($feature);
-    $add_cat = $prod->update_product_cat($id, $name, $link, $db->conn);
     $add_prod = $prod->update_prod($id, $prod_cat, $description, $mon_price, $annual_price, $sku, $db->conn);
+    $add_cat = $prod->update_product_cat($id, $prod_name, $url, $db->conn);
+    echo "<script>alert('Update Successfull');</script>";
+    echo "<script>window.location.href='view_product.php';</script>";
 }
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
@@ -148,7 +151,7 @@ if (isset($_POST['delete'])) {
                                     <?php } ?>
                                     <?php if (isset($_POST['edit']) && $_POST['id'] == $val['prod_id']) { ?>
                                         <td>
-                                            <input type="text" name="link" value="<?php echo $val['link']; ?>">
+                                            <input type="text" name="page_url" value="<?php echo $val['link']; ?>">
                                         </td>
                                     <?php } else { ?>
                                         <td>
@@ -197,7 +200,7 @@ if (isset($_POST['delete'])) {
                                     ?>
                                     <?php if (isset($_POST['edit']) && $_POST['id'] == $val['prod_id']) { ?>
                                         <td>
-                                            <input type="text" name="disk_space" value="<?php echo $descript; ?>">
+                                            <input type="text" name="<?php echo $key1 ?>" value="<?php echo $descript; ?>">
                                         </td>
                                     <?php } else { ?>
                                         <td>

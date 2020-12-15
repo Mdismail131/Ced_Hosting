@@ -119,9 +119,9 @@ if (isset($_GET['action']) && ($_GET['action'] == 'logout')) {
                                     <ul class="dropdown-menu">
                                             <?php foreach ($sql as $key => $val) { 
                                                 if ($val['prod_parent_id'] == 1) {?>
-                                                <li <?php if ($filename == 'linuxhosting.php') : ?><?php endif; ?> ><a href="linuxhosting.php"><?php echo $val['prod_name']; ?></a></li>
+                                                <li <?php if ($filename == 'linuxhosting.php') : ?><?php endif; ?> ><a href="http://localhost/Ced_Hosting/catpage.php?id=<?php echo $val['id'] ?>"><?php echo $val['prod_name']; ?></a></li>
                                                 <?php } 
-                                            }?>     
+                                            }?>    
                                     </ul>
                                 </li>
                                 <li <?php if ($filename == 'pricing.php') : ?>class="active"<?php endif; ?>><a href="pricing.php">Pricing</a></li>

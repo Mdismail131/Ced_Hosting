@@ -62,6 +62,18 @@
           document.getElementById("submit").removeAttribute("disabled");
       }
     } 
+    $('#sub_cat').blur(function(){
+        var sub_cat = document.getElementById('sub_cat').value;
+        var val = /^[a-zA-Z ]*$/g;
+        var val1 = /^\D+\w*$/g;
+        if (val.test(sub_cat) || val1.test(sub_cat)) {
+          sub_cat = sub_cat.replace(/  +/g, ' ');
+          sub_cat = sub_cat.trim();
+          document.getElementById('sub_cat').value = sub_cat;
+        } else {
+          document.getElementById('sub_cat').value = "";
+        }
+    });
 } );
   </script>
 </body>

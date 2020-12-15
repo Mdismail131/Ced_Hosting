@@ -11,7 +11,7 @@
  * @link     https://yoursite.com
  */
 require "admin/User.php";
-require "admin/Dbcon.php";
+// require "admin/Dbcon.php";
 if (isset($_SESSION['user'])) {
     header('Location: http://localhost/Ced_Hosting/index.php');
 }
@@ -32,9 +32,13 @@ if (isset($_POST['register'])) {
         echo "<script>alert('Mobile number must contain 10 digits.')</script>";
     } elseif ($mob[1] == $mob[2] && $mob[2] == $mob[3] && $mob[3] == $mob[4] && $mob[4] == $mob[5]) {
         echo "<script>alert('All Similar number not allowed')</script>";
+    } elseif ($sec_ques == "Choose") {
+        echo "<script>alert('Security Question should not be empty')</script>";
     } else {
         $user->signup($name, $email, $mobile, $date, $password, $sec_ques, $sec_ans, $db->conn);
-        echo "<script>window.location.href='http://localhost/Ced_Hosting/verification.php'</script>";
+        echo "<script>
+                window.location.href='http://localhost/Ced_Hosting/verification.php'
+            </script>";
     }
 }
 ?>
@@ -49,48 +53,79 @@ if (isset($_POST['register'])) {
                         <h3>personal information</h3>
                         <div>
                             <span>Full Name<label>*</label></span>
-                            <input type="text" name="name" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" required> 
+                            <input type="text" name="name" 
+                            pattern="^[a-zA-Z]+( [a-zA-Z]+)*$" required> 
                         </div>
-                        <!-- pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" -->
+            <!-- pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" -->
                         <div>
                             <span>Email Address<label>*</label></span>
-                            <input type="email" name="email" pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" placeholder="ex: abc.125@example.com" required> 
+                            <input type="email" name="email" 
+                            pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" 
+                            placeholder="ex: abc.125@example.com" required> 
                         </div>
                         <div>
                             <span>security question</span>
                             <select name="question" required>
                                 <option selected>Choose</option>
                                 <option>What was your childhood nickname?</option>
-                                <option>What is the name of your favourite childhood friend?</option>
-                                <option>What was your favourite place to visit as a child?</option>
+                                <option>
+                                    What is the name of your 
+                                    favourite childhood friend?
+                                </option>
+                                <option>
+                                    What was your favourite place 
+                                    to visit as a child?
+                                </option>
                                 <option>What was your dream job as a child??</option>
-                                <option>What is your favourite teacher's nickname?</option>
+                                <option>
+                                    What is your favourite teacher's nickname?
+                                </option>
                             </select> 
                         </div>
                         <div>
                             <span>Security answer</span>
-                            <input type="text" pattern="^[a-zA-Z]*$" name="answer" required> 
+                            <input type="text" pattern="^[a-zA-Z]*$" 
+                            name="answer" required> 
                         </div>
                         <div>
                             <span>Mobile</span>
-                            <input type="text" name="mobile" pattern="^([0]){0,1}([7-9]{1})([0-9]{9})$" placeholder="10 digit mobile number" required> 
+                            <input type="text" name="mobile" 
+                            minlength="10" maxlength="11"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                            placeholder="10 digit mobile number" required> 
                         </div>
                         <div class="clearfix"> </div> 
                         <a class="news-letter" href="#">
-                            <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="checkbox" checked="">
+                                Sign Up for Newsletter
+                            </label>
                         </a>
                         </div>
                         <div class="register-bottom-grid">
                                 <h3>login information</h3>
                                 <div>
                                     <span>Password<label>*</label></span>
-                                    <input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" placeholder="ex: Password@123" required>
-                                    <span style="color: red">Note: Password Must Contain Uppercase-letter, Lowercase-letter and a special-character</span>
+                                    <input type="password" name="password" 
+                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
+                                    (?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"
+                                    placeholder="ex: Password@123" required>
+                                    <span style="color: green;width: 350px">
+                                        Note: Password Must Contain Uppercase-letter,
+                                        Lowercase-letter and a special-character
+                                    </span>
                                 </div>
                                 <div>
                                     <span>Confirm Password<label>*</label></span>
-                                    <input type="password" name="re-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" placeholder="ex: Password@123" required>
-                                    <span style="color: red">Note: Password Must Contain Uppercase-letter, Lowercase-letter and a special-character</span>
+                                    <input type="password" name="re-password" 
+                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
+                                    (?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" 
+                                    placeholder="ex: Password@123" 
+                                    required>
+                                    <span style="color: green;width: 350px">
+                                        Note: Password Must Contain Uppercase-letter,
+                                        Lowercase-letter and a special-character
+                                    </span>
                                 </div>
                         </div>
                     <div class="clearfix"> </div>
