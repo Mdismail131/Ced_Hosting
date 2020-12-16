@@ -1,4 +1,15 @@
 <?php
+/**
+ * Viewproduct File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 session_start();
 require "header.php";
 require "Product.php";
@@ -52,7 +63,9 @@ if (isset($_POST['delete'])) {
                                 <i class="fas fa-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="http://localhost/Ced_Hosting/admin/index.php">Dashboards</a>
+                                <a href="http://localhost/Ced_Hosting/admin/index.php">
+                                    Dashboards
+                                </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Default
@@ -151,11 +164,11 @@ if (isset($_POST['delete'])) {
                                     <?php } ?>
                                     <?php if (isset($_POST['edit']) && $_POST['id'] == $val['prod_id']) { ?>
                                         <td>
-                                            <input type="text" name="page_url" value="<?php echo $val['link']; ?>">
+                                            <textarea name="page_url"><?php echo $val['html']; ?><textarea>
                                         </td>
                                     <?php } else { ?>
                                         <td>
-                                            <?php echo $val['link']; ?>
+                                            <?php echo $val['html']; ?>
                                         </td>
                                     <?php } ?>
                                     <?php if (isset($_POST['edit']) && $_POST['id'] == $val['prod_id']) { ?>

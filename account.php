@@ -1,6 +1,6 @@
 <?php
 /**
- * Header File.
+ * SignUp File.
  * PHP version 5
  * 
  * @category Components
@@ -60,8 +60,9 @@ if (isset($_POST['register'])) {
                         <div>
                             <span>Email Address<label>*</label></span>
                             <input type="email" name="email" 
-                            pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" 
-                            placeholder="ex: abc.125@example.com" required> 
+                            pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+
+                            (?:\.[a-zA-Z]+)*$" placeholder="ex: abc.125@example.com"
+                            required> 
                         </div>
                         <div>
                             <span>security question</span>
@@ -91,7 +92,8 @@ if (isset($_POST['register'])) {
                             <span>Mobile</span>
                             <input type="text" name="mobile" 
                             minlength="10" maxlength="11"
-                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '').
+                            replace(/(\..*)\./g, '$1');"
                             placeholder="10 digit mobile number" required> 
                         </div>
                         <div class="clearfix"> </div> 

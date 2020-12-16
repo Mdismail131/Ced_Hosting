@@ -80,7 +80,8 @@ if (isset($_POST['delete'])) {
                     <label>
                         Sub-Category:
                     </label>
-                    <input type="text" class="form-control form-control-alternative" name="sub_cat" id="sub_cat" pattern="^[a-zA-Z ]*$" placeholder="Sub Category">
+                    <input type="text" class="form-control form-control-alternative" name="sub_cat" id="sub_cat" placeholder="Sub Category">
+                    <!-- pattern="\b[a-zA-z]+[0-9a-zA-Z\.\ ]+[a-zA-z0-9]+$\b|^[a-zA-z][0-9a-zA-Z\ ]+$" -->
                 </div>
                 <div class="p-4 bg-secondary">
                     <label>
@@ -144,11 +145,11 @@ if (isset($_POST['delete'])) {
                     <?php } ?>
                     <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {?>
                       <td>
-                        <input type="text" name="link" value="<?php echo $val['link']; ?>">
+                        <input type="text" name="link" value="<?php echo $val['html']; ?>">
                       </td>
                     <?php } else {?>
                     <td>
-                    <?php echo $val['link']; ?>
+                    <?php echo $val['html']; ?>
                     </td>
                     <?php } ?>
                     </td>

@@ -106,9 +106,9 @@ if (isset($_POST['create'])) {
                 </div>
                 <div class="p-4 bg-secondary">
                     <label for="exampleFormControlSelect1">Page URL</label>
-                    <input type="text" 
+                    <textarea 
                     class="form-control form-control-alternative" 
-                    name="page_url" placeholder="Page URL">
+                    name="page_url" placeholder="Page URL"></textarea>
                 </div>
                 <hr class="line">
                 <div class="card-header border-0">

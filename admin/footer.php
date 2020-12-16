@@ -65,7 +65,7 @@
     $('#sub_cat').blur(function(){
         var sub_cat = document.getElementById('sub_cat').value;
         var val = /^[a-zA-Z ]*$/g;
-        var val1 = /^\D+\w*$/g;
+        var val1 = /\b[a-zA-z]+[0-9a-zA-Z\.\ ]+[a-zA-z0-9]+$\b|^[a-zA-z][0-9a-zA-Z\ ]+$/g;
         if (val.test(sub_cat) || val1.test(sub_cat)) {
           sub_cat = sub_cat.replace(/  +/g, ' ');
           sub_cat = sub_cat.trim();
@@ -75,6 +75,16 @@
         }
     });
 } );
+</script>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+   });
   </script>
 </body>
 

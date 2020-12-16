@@ -11,20 +11,18 @@
  * @link     https://yoursite.com
  */
 require "admin/User.php";
-// require "admin/Dbcon.php";
-// session_destroy();
 if (isset($_SESSION['user'])) {
     header('Location: http://localhost/Ced_Hosting/index.php');
 } elseif (isset($_SESSION['admin'])) {
     header('Location: http://localhost/Ced_Hosting/admin/index.php');
 }
+require "header.php";
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
     
     $user->login($email, $pass, $db->conn);
 }
-require "header.php";
 ?>
 <!---login--->
     <div class="content">

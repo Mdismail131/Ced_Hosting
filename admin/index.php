@@ -2,13 +2,13 @@
 session_start();
 // session_destroy();
 require "header.php";
-// if (!isset($_SESSION['admin'])) {
-//     echo "<script>window.location.href='http://localhost/Ced_Hosting/login.php'</script>";
-// }
 if (isset($_GET['action']) && ($_GET['action'] == 'logout')) {
     unset($_SESSION['admin']);
     header('Location: http://localhost/Ced_Hosting/login.php');
 }
+// if (!isset($_SESSION['admin'])) {
+//     echo "<script>window.location.href='http://localhost/Ced_Hosting/login.php'</script>";
+// }
 ?>
     <!-- Header -->
     <div class="header bg-primary pb-6">

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +19,7 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+  <script src="https://cdn.tiny.cloud/1/a88ddyc4t5xqcp4k2234ftq7kf4idosyhljoetvzpblnc55h/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
@@ -410,7 +412,7 @@
                     <img alt="Image placeholder" src="assets/img/theme/team-4.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold"><?php echo $_SESSION['admin'];?></span>
+                    <span class="mb-0 text-sm  font-weight-bold"><?php echo $_SESSION['admin'] ;?></span>
                   </div>
                 </div>
               </a>
@@ -437,7 +439,7 @@
                 <div class="dropdown-divider"></div>
                 <a href="http://localhost/Ced_Hosting/login.php?action=logout" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
+                  <span>Logout</span>   
                 </a>
               </div>
             </li>
@@ -445,4 +447,4 @@
         </div>
       </div>
     </nav>
-    <!-- Header -->
+  <!-- Header -->

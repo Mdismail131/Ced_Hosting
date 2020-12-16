@@ -37,7 +37,7 @@ class Product
     } 
     public function add_cat($sub_cat, $href, $conn)
     {
-        $sql = "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `link`) VALUES ('1', '$sub_cat', '$href')";
+        $sql = "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `html`) VALUES ('1', '$sub_cat', '$href')";
         $result = $conn->query($sql);
     } 
     public function delete_cat($id, $conn)
@@ -52,7 +52,7 @@ class Product
     } 
     public function update_cat($id, $name, $link, $conn)
     {
-        $sql = "UPDATE `tbl_product` SET `prod_name`= '$name',`link`= '$link' WHERE `id` = '$id'";
+        $sql = "UPDATE `tbl_product` SET `prod_name`= '$name',`html`= '$link' WHERE `id` = '$id'";
         $result = $conn->query($sql);
     }
     public function add_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $conn)
@@ -67,12 +67,12 @@ class Product
     }
     public function update_product_cat($id, $name, $link, $conn)
     {
-        $sql = "UPDATE `tbl_product` SET `prod_name`= '$name',`link`= '$link' WHERE `prod_parent_id` = '$id'";
+        $sql = "UPDATE `tbl_product` SET `prod_name`= '$name',`html`= '$link' WHERE `prod_parent_id` = '$id'";
         $result = $conn->query($sql);
     } 
     public function add_product_cat($cat, $sub_cat, $href, $conn)
     {
-        $sql = "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `link`) VALUES ('$cat', '$sub_cat', '$href')";
+        $sql = "INSERT INTO `tbl_product`(`prod_parent_id`, `prod_name`, `html`) VALUES ('$cat', '$sub_cat', '$href')";
         $result = $conn->query($sql);
     } 
     public function fetch_cat_name($id, $conn) 

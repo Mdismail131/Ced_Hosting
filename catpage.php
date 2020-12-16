@@ -1,6 +1,6 @@
 <?php
 /**
- * LinuxHosting File.
+ * Catpage File.
  * PHP version 5
  * 
  * @category Components
@@ -25,7 +25,7 @@ $cat = $prod->fetch_cat_name($_GET['id'], $db->conn);
                     if ($_GET['id'] == $val['prod_id']) {
                         $description = json_decode($val['description']);?>
                 <h2><?php echo $val['prod_name']; ?></h2>
-                <?php echo $val['link']; ?>
+                <?php echo $val['html']; ?>
                 <div class="clearfix"></div>
             </div>
         </div>
