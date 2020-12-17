@@ -43,12 +43,14 @@ class User
     /* Function for user SignUp */
     function signup($name, $email, $mobile, $date, $password, $sec_ques, $sec_ans, $conn)
     {
-        $sql = "select * from `tbl_user` where `email` = '$email'";
+        $sql = "select * from `tbl_user` where `email` = '$email' or `mobile` = '$mobile'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0 ) {
             ?>
-            <script>alert("Email Already Exist");</script>
+            <script>alert("User Already Exist");</script>
+
+            
             <?php
         } else {
             $sql1 = "INSERT INTO `tbl_user`(`email`, `name`, `mobile`, `email_approved`, `phone_approved`, `active`, `is_admin`, `sign_up_date`, `password`, `security_question`, `security_answer`) VALUES ('$email','$name','$mobile','0','0','0','0','$date','$password','$sec_ques','$sec_ans')";

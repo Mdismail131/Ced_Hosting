@@ -112,6 +112,27 @@
             </div>
         </div>
     </div>
-<!---footer--->		
+<!---footer--->
+<script>
+    $(document).ready(function(){
+        $('.buy_btn').on('click', function(){
+            var id = $(this).data('pid');
+            var cat_name = $(this).data('name');
+            var name = $(this).data('cat_name');
+            var link = $(this).data('link');
+            var available = $(this).data('available');
+            var date = $(this).data('date');
+            var mon_price = $(this).data('mon_price');
+            var annual_price = $(this).data('annual_price');
+            var sku = $(this).data('sku');
+            var web_space = $(this).data('web_space');
+            var domain = $(this).data('domain');
+            var techno = $(this).data('techno');
+            var mail = $(this).data('mail');
+
+            alert(id);
+        });
+    });
+</script>
 </body>
 </html>

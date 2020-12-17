@@ -75,7 +75,18 @@ $cat = $prod->fetch_cat_name($_GET['id'], $db->conn);
                                     </li>
                                     </ul>
                                 </div>
-                                <a href="#">buy now</a>
+                                <button type="button" class="buy_btn" data-pid="<?php echo $val['id'];?>"
+                                data-name="<?php echo $val['prod_name']; ?>"  
+                                data-cat_name="<?php echo $cat; ?>" 
+                                data-available="<?php echo $val['prod_available']; ?>"  
+                                data-date="<?php echo $val['prod_launch_date']; ?>"  
+                                data-mon_price="<?php echo $val['mon_price']; ?>" 
+                                data-annual_price="<?php echo $val['annual_price']; ?>" 
+                                data-sku="<?php echo $val['sku']; ?>"
+                                data-web_space="<?php echo $description->web_space; ?>"
+                                data-domain="<?php echo $description->domain; ?>"
+                                data-techno="<?php echo $description->techno; ?>"
+                                data-mail="<?php echo $description->mail; ?>" >Buy</button>
                             </div>
                                 <?php } ?>
                             <?php } ?>
@@ -133,7 +144,7 @@ $cat = $prod->fetch_cat_name($_GET['id'], $db->conn);
                                     <li><strong>Includes </strong>  Global CDN</li>
                                     <li>
                                         <strong>High Performance</strong>
-                                          Servers
+                                          Servers 
                                     </li>
                                     <li>
                                         <strong>location</strong> 
