@@ -119,18 +119,33 @@
             var id = $(this).data('pid');
             var cat_name = $(this).data('name');
             var name = $(this).data('cat_name');
-            var link = $(this).data('link');
-            var available = $(this).data('available');
-            var date = $(this).data('date');
+            // var link = $(this).data('link');
+            // var available = $(this).data('available');
+            // var date = $(this).data('date');
             var mon_price = $(this).data('mon_price');
-            var annual_price = $(this).data('annual_price');
+            // var annual_price = $(this).data('annual_price');
             var sku = $(this).data('sku');
-            var web_space = $(this).data('web_space');
-            var domain = $(this).data('domain');
-            var techno = $(this).data('techno');
-            var mail = $(this).data('mail');
+            // var web_space = $(this).data('web_space');
+            // var domain = $(this).data('domain');
+            // var techno = $(this).data('techno');
+            // var mail = $(this).data('mail');
 
-            alert(id);
+            // alert(cat_name);
+
+            $.ajax({
+                type: "POST",
+                url: "ajax.php",
+                data: { 
+                        id: id,
+                        sku: sku,
+                        cat_name: cat_name,
+                        prod_name: name,
+                        mon_price: mon_price
+                },
+                success:function(response){
+                    alert(response);
+                }
+            });
         });
     });
 </script>

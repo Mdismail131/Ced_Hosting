@@ -1,10 +1,25 @@
 <?php
+/**
+ * Edit_product File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 session_start();
 require "header.php";
 require "Product.php";
 require "Dbcon.php";
+if (!isset($_SESSION['admin'])) {
+    echo "<script>
+    window.location.href='http://localhost/Ced_Hosting/login.php'
+    </script>";
+}
 $prod = new Product();
-// $id = 21;
 if (isset($_GET['id']) && $_GET['id'] != "") {
     $id = $_GET['id'];
     $sql = $prod->all_categories($db->conn);
@@ -12,7 +27,6 @@ if (isset($_GET['id']) && $_GET['id'] != "") {
     echo "<pre>";
     print_r($prod_fetch);
     echo "</pre>";
-    // exit;
     if (isset($_POST['update'])) {
         $feature = array();
         $prod_cat = $_POST['prod_cat'];
@@ -35,7 +49,7 @@ if (isset($_GET['id']) && $_GET['id'] != "") {
         );
         $description = json_encode($feature);
         $add_cat = $prod->update_product_cat($prod_cat, $prod_name, $url, $db->conn);
-        $add_prod = $prod->update_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $db->conn);
+        $add_prod = $prod->update_prod($prod_cat, $description, $mon_price, $description, $annual_price, $sku, $db->conn);
     }
     ?>
         <!-- Header -->

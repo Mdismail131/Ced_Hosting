@@ -1,8 +1,24 @@
 <?php
+/**
+ * Add_Product File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 session_start();
 require "header.php";
 require "Product.php";
 require "Dbcon.php";
+if (!isset($_SESSION['admin'])) {
+    echo "<script>
+    window.location.href='http://localhost/Ced_Hosting/login.php'
+    </script>";
+}
 $prod = new Product();
 $sql = $prod->all_categories($db->conn);
 if (isset($_POST['create'])) {
@@ -27,7 +43,8 @@ if (isset($_POST['create'])) {
     );
     $description = json_encode($feature);
     $add_cat = $prod->add_product_cat($prod_cat, $prod_name, $url, $db->conn);
-    $add_prod = $prod->add_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $db->conn);
+    $add_prod = $prod->
+    add_prod($prod_cat, $description, $mon_price, $annual_price, $sku, $db->conn);
 }
 ?>
     <!-- Header -->
@@ -101,7 +118,7 @@ if (isset($_POST['create'])) {
                     <input type="text" id="prod_name" 
                     onblur="errors(this.id)" 
                     class="form-control form-control-alternative"
-                    name="prod_name" placeholder="Product Name">
+                    name="prod_name" placeholder="Product Name" pattern="^[a-zA-Z]+( [a-zA-Z]+)*$">
                     <div id="prod_nameError"></div>
                 </div>
                 <div class="p-4 bg-secondary">

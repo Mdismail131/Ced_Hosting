@@ -10,6 +10,7 @@
  * @version  SVN: $Id$
  * @link     https://yoursite.com
  */
+session_start();
 require "header.php";
 $prod = new Product();
 $all_prod = $prod->all_prod($db->conn);

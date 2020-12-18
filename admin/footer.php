@@ -1,24 +1,51 @@
+<?php
+/**
+ * Footer File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
+?>
 <!-- Footer -->
 <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6">
             <div class="copyright text-center  text-lg-left  text-muted">
-              &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+              &copy; 2020 <a href="https://www.creative-tim.com" 
+              class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
             </div>
           </div>
           <div class="col-lg-6">
             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
               <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                <a href="https://www.creative-tim.com" 
+                class="nav-link" target="_blank">
+                  Creative Tim
+                </a>
               </li>
               <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                <a href="https://www.creative-tim.com/presentation" 
+                class="nav-link" target="_blank">
+                  About Us
+                </a>
               </li>
               <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                <a href="http://blog.creative-tim.com" 
+                class="nav-link" target="_blank">
+                  Blog
+                </a>
               </li>
               <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                <a href="https://github.com/creativetimofficial/
+                argon-dashboard/blob/master/LICENSE.md" 
+                class="nav-link" target="_blank">
+                  MIT License
+                </a>
               </li>
             </ul>
           </div>
@@ -32,8 +59,10 @@
   <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <script src="http://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js">
+  </script>
+  <script src="http://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+  </script>
   <!-- Optional JS -->
   <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
@@ -47,12 +76,14 @@
       var input = document.getElementById(id);
       var inputValue = input.value;
       if (input.id == "mon_price") {
-          if (input.value.length > input.maxLength) input.value = input.value.slice(0, input.maxLength);
+        if (input.value.length > input.maxLength) 
+        input.value = input.value.slice(0, input.maxLength);
       }
       if (inputValue == '') {
           input.classList.add('div-error');
           var error = id+"Error";
-          document.getElementById(error).innerHTML = '<div class="form-error-message"><i class="fa fa-exclamation-circle"></i> This field is required.</div>';
+          document.getElementById(error).innerHTML = 
+          '<div class="form-error-message"><i class="fa fa-exclamation-circle"></i> This field is required.</div>';
           document.getElementById("submit").setAttribute("disabled", "true");
       }
       else {

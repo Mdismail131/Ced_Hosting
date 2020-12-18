@@ -1,8 +1,24 @@
 <?php
+/**
+ * Create_category File.
+ * PHP version 5
+ * 
+ * @category Components
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 session_start();
 require "header.php";
 require "Product.php";
 require "Dbcon.php";
+if (!isset($_SESSION['admin'])) {
+    echo "<script>
+    window.location.href='http://localhost/Ced_Hosting/login.php'
+    </script>";
+}
 $prod = new Product();
 $sql = $prod->all_categories($db->conn);
 if (isset($_POST['add_cat'])) {
@@ -34,7 +50,11 @@ if (isset($_POST['delete'])) {
               <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                    </a>
+                  </li>
                   <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Default</li>
                 </ol>
@@ -71,23 +91,28 @@ if (isset($_POST['delete'])) {
                     </label>
                     <div class="input-group mb-2"> 
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="ni ni-lock-circle-open text-primary"></i></div>
+                            <div class="input-group-text">
+                              <i class="ni ni-lock-circle-open text-primary"></i>
+                            </div>
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" value="Hosting" disabled>
+                        <input type="text" class="form-control" 
+                        id="inlineFormInputGroup" placeholder="Username" 
+                        value="Hosting" disabled>
                     </div>
                 </div>
                 <div class="p-4 bg-secondary">
                     <label>
                         Sub-Category:
                     </label>
-                    <input type="text" class="form-control form-control-alternative" name="sub_cat" id="sub_cat" placeholder="Sub Category">
-                    <!-- pattern="\b[a-zA-z]+[0-9a-zA-Z\.\ ]+[a-zA-z0-9]+$\b|^[a-zA-z][0-9a-zA-Z\ ]+$" -->
+                    <input type="text" class="form-control form-control-alternative" 
+                    name="sub_cat" id="sub_cat" placeholder="Sub Category">
                 </div>
                 <div class="p-4 bg-secondary">
                     <label>
                         link:
                     </label>
-                    <input type="text" class="form-control form-control-alternative" name="link" placeholder="href">
+                    <input type="text" class="form-control form-control-alternative" 
+                    name="link" placeholder="href">
                 </div>
                 <div class="p-4 bg-secondary">
                     <input type="submit" name="add_cat" class="btn btn-primary">
@@ -109,7 +134,8 @@ if (isset($_POST['delete'])) {
             </div>
             <div class="table-responsive">
               <!-- Projects table -->
-            <table class="table align-items-center table-flush display" id="table_id">
+            <table class="table align-items-center table-flush display"
+            id="table_id">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Category Id</th>
@@ -134,18 +160,24 @@ if (isset($_POST['delete'])) {
                     <td>
                     <?php echo $val['prod_parent_id']; ?>
                     </td>
-                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {?>
+                    <?php 
+                    if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {
+                    ?>
                       <td>
-                        <input type="text" name="prod_name" value="<?php echo $val['prod_name']; ?>">
+                        <input type="text" name="prod_name" 
+                        value="<?php echo $val['prod_name']; ?>">
                       </td>
                     <?php } else {?>
                     <td>
                     <?php echo $val['prod_name']; ?>
                     </td>
                     <?php } ?>
-                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {?>
+                    <?php 
+                    if (isset($_POST['edit']) && $_POST['id'] == $val['id']) {
+                    ?>
                       <td>
-                        <input type="text" name="link" value="<?php echo $val['html']; ?>">
+                        <input type="text" name="link" 
+                        value="<?php echo $val['html']; ?>">
                       </td>
                     <?php } else {?>
                     <td>
@@ -167,11 +199,28 @@ if (isset($_POST['delete'])) {
                     </td>
                     <td>
                     <?php if (isset($_POST['edit'])) {?>
-                      <button type="submit" name="update" onClick="return confirm('Are you sure you wanna update?')" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-edit"></i></button>
+                      <button type="submit" name="update" 
+                      onClick="return confirm('Are you sure you wanna update?')" 
+                      class="text-primary">
+                        <input type="hidden" name="id" 
+                        value="<?php echo $val['id']?>">
+                          <i class="fa fa-edit"></i>
+                      </button>
                     <?php } else {?>
-                      <button type="submit" name="edit" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><i class="fa fa-edit"></i></button>
+                      <button type="submit" name="edit" class="text-primary">
+                        <input type="hidden" name="id" 
+                        value="<?php echo $val['id']?>">
+                        <i class="fa fa-edit"></i>
+                      </button>
                     <?php } ?>
-                    <button type="submit" name="delete" onClick="return confirm('Are you sure you wanna delete this?')" class="text-primary"><input type="hidden" name="id" value="<?php echo $val['id']?>"><input type="hidden" name="ppid" value="<?php echo $val['prod_parent_id']?>"><i class="fa fa-trash"></i></button>
+                    <button type="submit" name="delete" 
+                    onClick="return confirm('Are you sure you wanna delete this?')" 
+                    class="text-primary">
+                      <input type="hidden" name="id" value="<?php echo $val['id']?>">
+                      <input type="hidden" name="ppid" 
+                      value="<?php echo $val['prod_parent_id']?>">
+                      <i class="fa fa-trash"></i>
+                    </button>
                     </td>
                   </form>
                   </tr>

@@ -14,6 +14,11 @@ session_start();
 require "header.php";
 require "Product.php";
 require "Dbcon.php";
+if (!isset($_SESSION['admin'])) {
+    echo "<script>
+    window.location.href='http://localhost/Ced_Hosting/login.php'
+    </script>";
+}
 $prod = new Product();
 $sql = $prod->all_prod($db->conn);
 if (isset($_POST['update'])) {
@@ -63,7 +68,8 @@ if (isset($_POST['delete'])) {
                                 <i class="fas fa-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="http://localhost/Ced_Hosting/admin/index.php">
+                                <a href="http://localhost/Ced_Hosting
+                                /admin/index.php">
                                     Dashboards
                                 </a>
                             </li>
@@ -127,17 +133,21 @@ if (isset($_POST['delete'])) {
                                     <th scope="row">
                                         <?php echo $val['id']; ?>
                                     </th>
-                                    <?php if (isset($_POST['edit']) && $_POST['id'] == $val['prod_id']) { ?>
+                                    <?php 
+                                    if (isset($_POST['edit']) && $_POST['id'] == $val['prod_id']) {
+                                    ?>
                                         <td>
                                         <select class="form-control" 
-                                        id="exampleFormControlSelect1" name="prod_cat">
+                                        id="exampleFormControlSelect1" 
+                                        name="prod_cat">
                                             <option>Please Select</option>
                                             <?php
                                             $sql1 = $prod->drop_down($db->conn);
                                             foreach ($sql1 as $key => $value) {
                                                 if ($value['prod_parent_id'] == 1) {
                                             ?>
-                                            <option value="<?php echo $value['id']; ?>">
+                                            <option 
+                                            value="<?php echo $value['id']; ?>">
                                                 <?php echo $value['prod_name']; ?>
                                             </option>
                                                 <?php }

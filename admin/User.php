@@ -14,25 +14,39 @@ session_start();
 require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+/**
+ * User Class.
+ * PHP version 5
+ * 
+ * @category Product
+ * @package  PHP
+ * @author   Md Ismail <mi0718839@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  SVN: $Id$
+ * @link     https://yoursite.com
+ */
 class User
 {
-    
-    /* Function for user and admin Login */
     function login($email, $password, $conn)
     {
-        $sql = "select * from `tbl_user` where `email` = '$email' and `password` = '$password'";
+        $sql = "select * from `tbl_user` where `email` = '$email' 
+        and `password` = '$password'";
         $result = $conn->query($sql);
         $row = mysqli_fetch_assoc($result);
         if ($result->num_rows > 0 ) {
             if ($row['is_admin'] == 1) {
                 $_SESSION['admin'] = $row['name'];
                 echo "<script>alert('Welcome Admin')</script>";
-                echo "<script>window.location.href='http://localhost/Ced_Hosting/admin/index.php'</script>";
+                echo "<script>
+                window.location.href='http://localhost/Ced_Hosting/admin/index.php'
+                </script>";
             } else {
                 if ($row['email_approved'] == 1 || $row['phone_approved'] == 1) {
                     $_SESSION['user'] = $row['name'];
                     echo "<script>alert('successfully logged in')</script>";
-                    echo "<script>window.location.href='http://localhost/Ced_Hosting/index.php'</script>";
+                    echo "<script>
+                    window.location.href='http://localhost/Ced_Hosting/index.php'
+                    </script>";
                 } 
             }
         } else {
@@ -43,7 +57,8 @@ class User
     /* Function for user SignUp */
     function signup($name, $email, $mobile, $date, $password, $sec_ques, $sec_ans, $conn)
     {
-        $sql = "select * from `tbl_user` where `email` = '$email' or `mobile` = '$mobile'";
+        $sql = "select * from `tbl_user` 
+        where `email` = '$email' or `mobile` = '$mobile'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0 ) {
@@ -53,10 +68,18 @@ class User
             
             <?php
         } else {
-            $sql1 = "INSERT INTO `tbl_user`(`email`, `name`, `mobile`, `email_approved`, `phone_approved`, `active`, `is_admin`, `sign_up_date`, `password`, `security_question`, `security_answer`) VALUES ('$email','$name','$mobile','0','0','0','0','$date','$password','$sec_ques','$sec_ans')";
+            $sql1 = "INSERT INTO `tbl_user`
+            (`email`, `name`, `mobile`, `email_approved`, `phone_approved`, `active`,
+            `is_admin`, `sign_up_date`, `password`, `security_question`,
+             `security_answer`) 
+            VALUES ('$email','$name','$mobile','0','0','0','0',
+            '$date','$password','$sec_ques','$sec_ans')";
             $result1 = $conn->query($sql1);
             if (isset($result1)) {
-            ?><script>alert("Successfully Signup please wait for Admin authentication");</script><?php
+            ?><script>
+                alert("Successfully Signup please wait for Admin authentication");
+                </script>
+            <?php
             } else {
             ?><script>alert("Please Provide Valid Inputs");</script><?php
             }
@@ -108,7 +131,10 @@ class User
 
             $mailer->isHTML(true);
             $mailer->Subject = 'PHPMailer Test';
-            $mailer->Body = 'Verify Your Account<a href="http://localhost/Ced_Hosting/verified.php?id='.$id.'">Click here</a>';
+            $mailer->Body = 'Verify Your Account
+            <a href="http://localhost/Ced_Hosting/verified.php?id='.$id.'">
+                Click here
+            </a>';
             $mailer->send();
             $mailer->ClearAllRecipients();
             echo "MAIL HAS BEEN SENT SUCCESSFULLY";
@@ -122,7 +148,8 @@ class User
         $sql = "select * from `tbl_user` where `id` = '$id'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            $sql1 = "UPDATE `tbl_user` SET `email_approved`= '1', `active` = '1' WHERE `id` = '$id'";
+            $sql1 = "UPDATE `tbl_user` SET `email_approved`= '1', `active` = '1' 
+            WHERE `id` = '$id'";
             $result1 = $conn->query($sql1);
             echo "<script>alert('Welcome to Ced Hosting')</script>";
         }

@@ -10,7 +10,15 @@
  * @version  SVN: $Id$
  * @link     https://yoursite.com
  */ 
+session_start();
 require "header.php";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    unset($_SESSION['cartdata'][$id]);
+    echo "<script>
+    alert('Item Deleted');
+    window.location.href='cart.php';</script>";
+}
 ?>
 <section id="cart-view">
    <div class="container">
@@ -24,12 +32,13 @@ require "header.php";
                   <table class="table">
                     <thead>
                       <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Product</th>
+                        <th>Id</th>
+                        <th>SKU</th>
+                        <th>Product Name</th>
+                        <th>Product Category</th>
+                        <th>Billing Cycle</th>
                         <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody id="cart">
@@ -38,29 +47,27 @@ require "header.php";
                     $cart_products = array();
                     $total = 0;
                     $num = 0; 
-                    if (isset($_SESSION['cart_products']) && $_SESSION['cart_products'] != "") {
+                    if (isset($_SESSION['cartdata']) && $_SESSION['cartdata'] != "") {
 
-                        $cart_products = $_SESSION['cart_products'];
+                        $cart_products = $_SESSION['cartdata'];
                     }
                     
-                    foreach ($cart_products as $val1) {
+                    foreach ($cart_products as $key => $val1) {
                     ?>
                     <tr>
-                      <td><a class="remove aa-remove-product" data-id="<?php echo $val1['id']?>" data-name="<?php echo $val1['name']?>" data-price="<?php echo $val1['price']?>" href="javascript:void(0)"><fa class="fa fa-close"></fa></a></td>
-                      <td><a href="#"><img src="simpleadmin/resources/uploads/<?php echo $val1['img']?>" alt="img"></a></td>
-                      <td><a class="aa-cart-title" href="#"><?php echo $val1['name']; ?></a></td>
+                      <td><?php echo $val1['id']; ?></td>
+                      <td><?php echo $val1['sku']; ?></td>
+                      <td><?php echo $val1['name']; ?></td>
+                      <td><?php echo $val1['cat_name']; ?></td>
+                      <td>Monthly</td>
                       <td><?php echo $val1['price']; ?></td>
-                      <td><input class="aa-cart-quantity" type="text" readonly value="<?php echo $val1['qnt']; ?>"></td>
-                      <td>$<?php 
-                          $sum = $val1['qnt'] * $val1['price'];
-                          echo $sum;
-                        ?></td>
+                      <td><a href="cart.php?id=<?php echo $key; ?>"><i class="glyphicon glyphicon-trash" style="color: red"></i></td>
                     </tr>
                     <input type="hidden" name="data[<?php echo $num; ?>][name]" value="<?php echo $val1['name']; ?>" />
                     <input type="hidden" name="data[<?php echo $num; ?>][price]" value="<?php echo $val1['price']; ?>" />
                     <input type="hidden" name="data[<?php echo $num; ?>][quantity]" value="<?php echo $val1['qnt']; ?>" />
                     <?php 
-                    $total = $total + $sum;
+                    $total = $total + $val1['price'];;
                     $num++; 
                     } ?>
                     </tbody>
@@ -85,12 +92,12 @@ require "header.php";
                </table>
                 <?php
 
-                if (isset($_SESSION['user_logged_in'])) {
+                if (isset($_SESSION['user'])) {
 
                     echo '<a href="javascript:void(0)" class="aa-cart-view-btn"><input type="submit" class="aa-cart-view-btn" name="checkout" value="Proced to Checkout"/></a>';
 
                 } else {
-                    echo '<a href="http://localhost/Training/dailyShop/simpleadmin/login.php" class="aa-cart-view-btn">Login</a>';
+                    echo '<a href="http://localhost/Ced_Hosting/login.php" class="aa-cart-view-btn">Login</a>';
                 }
 
                 ?>
